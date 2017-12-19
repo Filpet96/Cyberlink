@@ -73,6 +73,7 @@ li a:hover .settingsicon {
   margin: 0 auto;
   width: 90%;
   height: 100%;
+  margin-top: 1%;
 }
 
 .my-profile {
@@ -81,6 +82,7 @@ li a:hover .settingsicon {
   width: 25%;
   border-radius: 3%;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  float: left;
 }
 
 .username h1 {
@@ -144,4 +146,43 @@ td .profession::before {
   color: transparent;
   padding-left: 20px; // equal to width of image.
   padding-right: 10px;
+}
+
+.post-container {
+  width: 60%;
+  height: 22.5%;
+  background: white;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-left: 2%;
+  border-radius: 4px;
+}
+
+.post-container h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: calc(1.2vh + 1.2vw);
+}
+
+.post-container input {
+  display: block;
+  width: 90%;
+  height: 20%;
+  margin: 0 auto;
+  font-size: calc(0.8vh + 0.8vw);
+}
+
+.post-container textarea {
+  display: block;
+  width: 90%;
+  height: 20%;
+  margin: 0 auto;
+  font-size: calc(0.5vh + 0.5vw);
+  resize: none;
+}
+
+.post-container .text {
+  margin-top: 1.5%;
+  height: 40%;
 }

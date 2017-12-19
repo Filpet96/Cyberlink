@@ -42,5 +42,10 @@
   </table>
   </div>
 </div>
+<div class="post-container">
+  <h1>Create Post</h1>
+  <input type="text" name="" value="Title">
+  <textarea class="text" type="text" name="" value="Text" placeholder="Text area"></textarea>
+</div>
   </body>
 </html>
