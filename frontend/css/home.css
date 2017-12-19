@@ -1,0 +1,147 @@
+html body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F5F7F8;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  background: #51626D;
+  top: 0;
+  height: 8%;
+  width: 100%;
+}
+
+header nav {
+  height: 100%;
+}
+
+nav li {
+  display: inline;
+  width: 8%;
+  height: 100%;
+  float: left;
+}
+
+li a {
+  color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a .homeicon {
+  width: 40%;
+  height: 40%;
+  background-image: url(../images/home.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a .settingsicon {
+  width: 40%;
+  height: 40%;
+  background-image: url(../images/settings.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+li a:hover {
+  background-color: white;
+}
+
+li a:hover .homeicon {
+  background-image: url(../images/homeblack.png);
+}
+
+li a:hover .settingsicon {
+  background-image: url(../images/settingsblack.png);
+}
+
+.container {
+  /*background-color: black;*/
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+}
+
+.my-profile {
+  background-color: white;
+  height: 45%;
+  width: 25%;
+  border-radius: 3%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.username h1 {
+  color: black;
+  text-align: center;
+  font-size: calc(1.2vw + 1.2vh);
+}
+
+.profile-image {
+  position: relative;
+  border-radius: 50%;
+  width: 40%;
+  height: auto;
+  padding-top: 40%;
+  background: black;
+  margin: 0 auto;
+}
+
+hr {
+  border: 1px solid #eee;
+  width: 90%;
+}
+
+table {
+  float: left;
+}
+
+table tr td {
+  padding-top: 12%;
+  font-size: calc(0.7vh + 0.7vw);
+}
+
+td .birthday::before {
+  content: ".....";
+  background-image: url(../images/birthday.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 55% 100%;
+  color: transparent;
+  padding-left: 20px; // equal to width of image.
+  padding-right: 10px;
+}
+
+td .location::before {
+  content: ".....";
+  background-image: url(../images/location.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 55% 100%;
+  color: transparent;
+  padding-left: 20px; // equal to width of image.
+  padding-right: 10px;
+}
+
+td .profession::before {
+  content: ".....";
+  background-image: url(../images/profession.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 55% 100%;
+  color: transparent;
+  padding-left: 20px; // equal to width of image.
+  padding-right: 10px;
+}
