@@ -17,6 +17,16 @@
   background-position: center;
   background-size: cover;
   }
+  .post-profile-image {
+background: url(
+<?php if (!empty($edit_row['userPic'])): ?>
+<?php echo "frontend/user_images/".$edit_row['userPic']; ?>
+<?php else: echo "frontend/user-images/cyberlink.jpg"; ?>
+<?php endif; ?>
+);
+background-position: center;
+background-size: cover;
+}
   </style>
   </head>
   <body>
@@ -29,7 +39,7 @@
 <div class="container">
   <div class="my-profile">
     <div class="username">
-      <h1>Username</h1>
+      <h1>Filip Petersson</h1>
     </div>
     <div class="profile-image"></div>
     <hr>
@@ -42,10 +52,26 @@
   </table>
   </div>
 </div>
-<div class="post-container">
+<div class="create-post-container">
   <h1>Create Post</h1>
-  <input type="text" name="" value="Title">
+  <input type="text" name="" value="" placeholder="Title">
   <textarea class="text" type="text" name="" value="Text" placeholder="Text area"></textarea>
+  <div class="create-post">
+  <form class="" action="index.html" method="post">
+    <input type="submit" name="submit" value="Post">
+  </form>
+  </div>
 </div>
+<div class="post-container">
+  <div class="post-profile-image"></div>
+  <h1>Filip Petersson</h1>
+  <div class="time-since-post">1 min</div>
+  <hr>
+  <form class="like-comment" action="index.html" method="post">
+    <input class="like" type="submit" name="submit" value="Like">
+<input class="comment" type="submit" name="submit" value="Comment">
+  </form>
+</div>
+
   </body>
 </html>

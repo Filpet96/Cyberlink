@@ -148,41 +148,134 @@ td .profession::before {
   padding-right: 10px;
 }
 
-.post-container {
+.create-post-container {
   width: 60%;
-  height: 22.5%;
+  height: 32%;
   background: white;
   display: inline-block;
   position: relative;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   margin-left: 2%;
   border-radius: 4px;
+  padding: 1%;
 }
 
-.post-container h1 {
+.create-post-container h1 {
   margin: 0 auto;
   text-align: center;
-  font-size: calc(1.2vh + 1.2vw);
+  font-size: calc(1.1vh + 1.1vw);
+  margin-bottom: 1%;
 }
 
-.post-container input {
+.create-post-container input {
   display: block;
-  width: 90%;
+  width: 95%;
   height: 20%;
-  margin: 0 auto;
   font-size: calc(0.8vh + 0.8vw);
+  margin: 0 auto;
 }
 
-.post-container textarea {
+.create-post-container textarea {
   display: block;
-  width: 90%;
+  width: 95%;
   height: 20%;
   margin: 0 auto;
   font-size: calc(0.5vh + 0.5vw);
   resize: none;
 }
 
-.post-container .text {
+.create-post-container .text {
   margin-top: 1.5%;
   height: 40%;
+}
+
+.post-container {
+  width: 60%;
+  height: 55%;
+  background: white;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-left: 2%;
+  border-radius: 4px;
+  margin-top: 1%;
+  padding: 1%;
+  /*box-sizing: border-box;*/
+}
+
+.post-profile-image {
+  position: relative;
+  border-radius: 50%;
+  width: 10%;
+  height: auto;
+  padding-top: 10%;
+  background: black;
+  float: left;
+}
+
+.post-container h1 {
+  padding-left: 12%;
+  font-size: calc(0.9vh + 0.8vw);
+}
+
+.time-since-post {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  opacity: 0.6;
+}
+
+.create-post input {
+  width: 15%;
+  height: 35px;
+  margin: 0;
+  margin-left: 2%;
+  border-radius: 0%;
+  background: #51626D;
+  color: white;
+  margin-top: 1%;
+}
+
+.create-post input:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #51626D;
+}
+
+.post-container hr {
+  margin-top: 10%;
+  width: 100%;
+}
+
+.like-comment {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  width: 50%;
+  height: 8%;
+}
+
+.like-comment input {
+  background: #51626D;
+  color: white;
+  border: 0;
+  width: 20%;
+  height: 100%;
+}
+
+.like-comment input:hover {
+  background-color: white;
+  cursor: pointer;
+  color: #51626D;
+  border: 1px solid #51626D;
+}
+
+.like {
+  float: left;
+}
+
+.comment {
+  margin-left: 2%;
 }
