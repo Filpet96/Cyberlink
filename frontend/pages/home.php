@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION['loggedin'])) {
+    header("Location: ../../index");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,6 +41,7 @@ background-size: cover;
   <nav>
     <li><a class="home" href="#"><div class="homeicon"></div></a></li>
     <li><a class="settings" href="#"><div class="settingsicon"></div></a></li>
+    <li class="logoutli"><a class="logout" href="backend/account/logout.php"><div class="logouticon"></div></a></li>
   </nav>
 </header>
 <div class="container">
@@ -67,9 +75,12 @@ background-size: cover;
   <h1>Filip Petersson</h1>
   <div class="time-since-post">1 min</div>
   <hr>
+  <div class="post-content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
   <form class="like-comment" action="index.html" method="post">
     <input class="like" type="submit" name="submit" value="Like">
-<input class="comment" type="submit" name="submit" value="Comment">
+    <input class="comment" type="submit" name="submit" value="Comment">
   </form>
 </div>
 
