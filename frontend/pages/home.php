@@ -40,8 +40,8 @@ background-size: cover;
 <header>
   <nav>
     <li><a class="home" href="#"><div class="homeicon"></div></a></li>
-    <li><a class="settings" href="#"><div class="settingsicon"></div></a></li>
-    <li class="logoutli"><a class="logout" href="backend/account/logout.php"><div class="logouticon"></div></a></li>
+    <li><a class="settings" href="../../settings"><div class="settingsicon"></div></a></li>
+    <li class="logoutli"><a class="logout" href="../../Logging-out"><div class="logouticon"></div></a></li>
   </nav>
 </header>
 <div class="container">

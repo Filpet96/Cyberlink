@@ -1,8 +1,3 @@
-@font-face {
-  font-family: 'Dyslexie';
-  src: url(../Fonts/Dyslexie_Regular_8542.ttf);
-}
-
 html body {
   box-sizing: border-box;
   margin: 0;
@@ -10,10 +5,10 @@ html body {
 }
 
 body {
-  background: #F5F7F8;
+  background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
   width: 100vw;
   height: 100vh;
-  font-family: 'Dyslexie';
+  font-family: 'Open Sans', sans-serif;
 }
 
 header {
@@ -110,7 +105,7 @@ li a:hover .logouticon {
 .username h1 {
   color: black;
   text-align: center;
-  font-size: calc(1vw + 1vh);
+  font-size: calc(1.2vw + 1.2vh);
 }
 
 .profile-image {
@@ -134,7 +129,7 @@ table {
 
 table tr td {
   padding-top: 12%;
-  font-size: calc(0.6vh + 0.6vw);
+  font-size: calc(0.7vh + 0.7vw);
 }
 
 td .birthday::before {
@@ -185,7 +180,7 @@ td .profession::before {
 .create-post-container h1 {
   margin: 0 auto;
   text-align: center;
-  font-size: calc(0.8vh + 0.8vw);
+  font-size: calc(1vh + 1vw);
   margin-bottom: 1%;
 }
 
@@ -193,7 +188,7 @@ td .profession::before {
   display: block;
   width: 95%;
   height: 20%;
-  font-size: calc(0.8vh + 0.8vw);
+  font-size: calc(0.9vh + 0.9vw);
   margin: 0 auto;
 }
 
@@ -202,7 +197,7 @@ td .profession::before {
   width: 95%;
   height: 20%;
   margin: 0 auto;
-  font-size: calc(0.4vh + 0.4vw);
+  font-size: calc(0.6vh + 0.6vw);
   resize: none;
 }
 
@@ -222,7 +217,7 @@ td .profession::before {
   border-radius: 4px;
   margin-top: 1%;
   padding: 1%;
-  padding-bottom: 3%;
+  padding-bottom: 5%;
   /*box-sizing: border-box;*/
 }
 
@@ -238,7 +233,7 @@ td .profession::before {
 
 .post-container h1 {
   padding-left: 12%;
-  font-size: calc(0.8vh + 0.8vw);
+  font-size: calc(0.9vh + 0.9vw);
 }
 
 .time-since-post {
@@ -274,7 +269,7 @@ td .profession::before {
   position: absolute;
   bottom: 0;
   left: 0;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
   margin-left: 1%;
   width: 50%;
   height: 8%;
@@ -296,5 +291,5 @@ td .profession::before {
 }
 
 .post-content p {
-  font-size: calc(0.55vh + 0.55vw);
+  font-size: calc(0.6vh + 0.6vw);
 }

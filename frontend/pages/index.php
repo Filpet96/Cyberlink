@@ -22,6 +22,7 @@ unset($_SESSION['Accountfail']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Cyberlink</title>
     <link href="frontend/css/index.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -44,7 +45,7 @@ unset($_SESSION['Accountfail']);
         <div class="user_options-forms" id="user_options-forms">
           <div class="user_forms-login">
             <h2 class="forms_title">Login</h2>
-            <form class="forms_form" action="backend/account/formredirect.php" method="POST">
+            <form class="forms_form" action="Logging-in" method="POST">
               <fieldset class="forms_fieldset">
                 <div class="forms_field">
                   <input type="email" placeholder="Email" name="email" class="forms_field-input" required autofocus />
@@ -97,7 +98,6 @@ unset($_SESSION['Accountfail']);
     <input type="submit" value="register" name="register" class="forms_buttons-action">
   </div>
 </div>
-
     </div>
   </form>
           </div>

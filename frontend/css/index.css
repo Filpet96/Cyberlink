@@ -1,22 +1,13 @@
-/* General variables */
-
-/* General configurations */
-
-@font-face {
-  font-family: 'Dyslexie';
-  src: url(../Fonts/Dyslexie_Regular_8542.ttf);
-}
-
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Dyslexie", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   line-height: 1em;
-  background: #51626D;
+  background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
 }
 
 button {
@@ -260,6 +251,7 @@ input:-webkit-autofill {
   letter-spacing: 0.1rem;
   -webkit-transition: border-color 0.2s ease-in-out;
   transition: border-color 0.2s ease-in-out;
+  padding-left: 2%;
 }
 
 .user_options-forms .forms_field-input:focus {
@@ -295,7 +287,6 @@ input:-webkit-autofill {
 .user_options-forms .forms_buttons-action {
   background-color: white;
   border-radius: 3px;
-  padding: 10px 35px;
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
@@ -646,4 +637,8 @@ select option {
 
 .fa {
   color: white;
+}
+
+fieldset {
+  border: 0;
 }

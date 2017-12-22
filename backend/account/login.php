@@ -16,9 +16,10 @@ if (!empty($loginquery)) {
     if (password_verify($password, $loginquery[0]['password'])) {
         $_SESSION['user_id'] = $loginquery[0]['id'];
         $_SESSION['loggedin'] = $loginquery[0]['email'];
+        $_SESSION['user_fullname'] = $loginquery[0]['fullname'];
+        $_SESSION['user_dateofbirth'] = $loginquery[0]['dateofbirth'];
         $_SESSION['timestamp'] = time();
-        // require_once 'frontend/templates/loading.php';
-        header('location:../../home');
+        require_once 'frontend/templates/loading.php';
     } else {
         echo "Invalid Password!";
     }
