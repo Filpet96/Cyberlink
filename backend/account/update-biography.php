@@ -1,0 +1,34 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+include($_SERVER["DOCUMENT_ROOT"] . "/system/connection.php");
+
+
+
+try {
+    if (isset($_POST["biography"])) {
+        $email = $_SESSION['loggedin'];
+        $dateofbirth = $_POST['dateofbirth'];
+        $country = $_POST['country'];
+        $gender = $_POST['gender'];
+        $fullname = $_POST['fullname'];
+
+        $update_biography = $pdo->prepare("UPDATE user_biography SET fullname = :fullname, dateofbirth = :dateofbirth, country = :country, gender = :gender WHERE email=:email");
+
+        $update_biography->bindParam(':fullname', $fullname);
+        $update_biography->bindParam(':dateofbirth', $dateofbirth);
+        $update_biography->bindParam(':country', $country);
+        $update_biography->bindParam(':gender', $gender);
+        $update_biography->bindParam(':email', $email);
+        $result = $update_biography->execute();
+
+        if ($result) {
+            header("location: ../../profile-settings");
+        }
+    }
+} catch (PDOException $e) {
+    echo "Database error" . "<br>" . $e->getMessage();
+}
+
+$pdo = null;

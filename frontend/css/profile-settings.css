@@ -115,6 +115,11 @@ li a:hover .logouticon {
 .settings-container nav .left {
   border-right: 1px solid black;
   box-sizing: border-box;
+  color: black
+}
+
+.settings-container nav .right {
+  color: black;
 }
 
 .settings-container nav .left:hover {
@@ -155,7 +160,7 @@ li a:hover .logouticon {
   margin-top: 1%;
 }
 
-form {
+.picture-container form {
   padding-top: 10%;
   width: 100%;
   text-align: center;
@@ -212,3 +217,12 @@ input[type="text"], textarea {
 .save-information input:hover {
   cursor: pointer;
 }
+
+select {
+  width: 100%;
+  border: 1px solid black;
+  /*height: 150%;*/
+  font-size: calc(0.7vh + 0.7vw);
+}
+
+option {}

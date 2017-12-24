@@ -23,13 +23,17 @@ if ($stmt->fetch()) {
     //INSERT DATA INTO DATABASE
     $sql = "INSERT INTO users ( fullname, password, email, dateofbirth )
   VALUES ( :fullname, :password, :email, :dateofbirth )";
+    $sql_biography = "INSERT INTO user_biography ( dateofbirth, email )
+VALUES ( :dateofbirth, :email )";
 
     // EXECUTE AND PREPARE
     $query = $pdo->prepare($sql);
-    $result = $query->execute(array(':fullname' => $fullname, ':password' => $password, ':email' => $email, ':dateofbirth' => $dateofbirth));
+    $result = $query->execute(array(':fullname' => $fullname, ':password' => $password, ':email' => $email));
+    $query_biography = $pdo->prepare($sql_biography);
+    $result_biography = $query_biography->execute(array(':dateofbirth' => $dateofbirth, ':email' => $email));
 
     //EXECUTE QUERY
-    if ($result) {
+    if ($result && $result_biography) {
         $_SESSION['Accountsucess'] = "Account has been added sucessfully.";
         header("location: ../../index");
     } else {
