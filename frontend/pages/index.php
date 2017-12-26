@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['loggedin'])) {
-    header('location:../../index');
+    header('location:../../home');
 }
 $AccountsucessRegister = $_SESSION['Accountsucess'] ?? '';
 $AccountfailRegister = $_SESSION['Accountfail'] ?? '';
@@ -74,7 +74,7 @@ unset($_SESSION['Accountfail']);
         <div class="input-icon"><i class="fa fa-envelope"></i></div>
       </div>
       <div class="input-group input-group-icon">
-        <input type="password" name="password" placeholder="Password"/>
+        <input type="password" name="password" placeholder="Password" pattern=".{6,}" required title="6 characters min."/>
         <div class="input-icon"><i class="fa fa-key"></i></div>
       </div>
     </div>

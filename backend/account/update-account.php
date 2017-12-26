@@ -21,6 +21,7 @@ try {
         $submitted_email = $_POST['email'];
         if (!empty($new_password) && strlen($new_password) < 6) {
             $_SESSION['Password_Email_Changed'] = "ERROR Password must be atleast 6 characters.";
+            exit;
         }
 
         if ($submitted_email !== $email) {
@@ -52,7 +53,8 @@ try {
                     exit;
                 }
             } else {
-                echo "wrong password";
+                $_SESSION['Wrong_Password'] = "Wrong Password, try again.";
+                header("location: ../../account-settings");
                 exit;
             }
         }

@@ -8,9 +8,11 @@ include 'backend/account/update-account.php';
 $Password_Email_Changed = $_SESSION['Password_Email_Changed'] ?? '';
 $Email_Changed = $_SESSION['Email_Changed'] ?? '';
 $Password_Changed = $_SESSION['Password_Changed'] ?? '';
+$Wrong_Password = $_SESSION['Wrong_Password'] ?? '';
 unset($_SESSION['Password_Email_Changed']);
 unset($_SESSION['Email_Changed']);
 unset($_SESSION['Password_Changed']);
+unset($_SESSION['Wrong_Password']);
 ?>
  <?php if ($Password_Email_Changed !== ''): ?>
  <?php echo "<script>alert('$Password_Email_Changed');</script>" ?>
@@ -21,6 +23,9 @@ unset($_SESSION['Password_Changed']);
  <?php if ($Password_Changed !== ''): ?>
  <?php echo "<script>alert('$Password_Changed');</script>" ?>
  <?php endif;?>
+ <?php if ($Wrong_Password !== ''): ?>
+ <?php echo "<script>alert('$Wrong_Password');</script>" ?>
+ <?php endif;?>
 
 <!DOCTYPE html>
 <html>
@@ -30,28 +35,6 @@ unset($_SESSION['Password_Changed']);
     <title>Cyberlink</title>
     <link href="frontend/css/account-settings.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <style>
-    .profile-image {
-  background: url(
-  <?php if (!empty($edit_row['userPic'])): ?>
-  <?php echo "frontend/user_images/".$edit_row['userPic']; ?>
-  <?php else: echo "frontend/user-images/cyberlink.jpg"; ?>
-  <?php endif; ?>
-  );
-  background-position: center;
-  background-size: cover;
-  }
-  .post-profile-image {
-background: url(
-<?php if (!empty($edit_row['userPic'])): ?>
-<?php echo "frontend/user_images/".$edit_row['userPic']; ?>
-<?php else: echo "frontend/user-images/cyberlink.jpg"; ?>
-<?php endif; ?>
-);
-background-position: center;
-background-size: cover;
-}
-  </style>
   </head>
   <body>
 <header>
@@ -68,13 +51,6 @@ background-size: cover;
       <a href="../../account-settings"><li class="right">Account</li></a>
     </nav>
     <div class="profile-content">
-      <div class="picture-container">
-        <div class="picture-circle"></div>
-        <form class="" action="index.html" method="post">
-          <label class="select-file" for="profile-img">Select File</label>
-          <input type="file" id="profile-img" name="user_image"   accept="image/*" style="display:none" />
-        </form>
-      </div>
       <div class="information-container">
         <form class="" name="email" action="backend/account/update-account.php" method="post">
       <fieldset>
@@ -85,7 +61,7 @@ background-size: cover;
       <?php endif; ?>">
       </fieldset>
       <fieldset>
-        <input type="password" name="new_password" id="new_password" placeholder="New password" required >
+        <input type="password" name="new_password" id="new_password" placeholder="New password" pattern=".{6,}" required title="6 characters min." >
       </fieldset>
       </div>
       <div class="save-information">

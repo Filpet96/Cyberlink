@@ -3,6 +3,7 @@ if (!isset($_SESSION['loggedin'])) {
     header("Location: ../../index");
 }
 include 'frontend/templates/biography.php';
+include 'backend/account/profile-img.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ include 'frontend/templates/biography.php';
     <link href="frontend/css/profile-settings.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <style>
-    .profile-image {
+    .picture-circle {
   background: url(
   <?php if (!empty($edit_row['userPic'])): ?>
   <?php echo "frontend/user_images/".$edit_row['userPic']; ?>
@@ -24,16 +25,6 @@ include 'frontend/templates/biography.php';
   background-position: center;
   background-size: cover;
   }
-  .post-profile-image {
-background: url(
-<?php if (!empty($edit_row['userPic'])): ?>
-<?php echo "frontend/user_images/".$edit_row['userPic']; ?>
-<?php else: echo "frontend/user-images/cyberlink.jpg"; ?>
-<?php endif; ?>
-);
-background-position: center;
-background-size: cover;
-}
   </style>
   </head>
   <body>
@@ -53,9 +44,9 @@ background-size: cover;
     <div class="profile-content">
       <div class="picture-container">
         <div class="picture-circle"></div>
-        <form class="" action="index.html" method="post">
+        <form class="" id="imgform" action="backend/account/profile-img.php" method="post" enctype="multipart/form-data">
           <label class="select-file" for="profile-img">Select File</label>
-          <input type="file" id="profile-img" name="user_image"   accept="image/*" style="display:none" />
+          <input type="file" id="profile-img" name="user_image" accept="image/*" style="display:none" />
         </form>
       </div>
       <div class="information-container">
@@ -340,4 +331,9 @@ background-size: cover;
   </div>
 </div>
   </body>
+  <script>
+  document.getElementById("profile-img").onchange = function() {
+      document.getElementById("imgform").submit();
+  }
+  </script>
 </html>

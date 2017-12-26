@@ -2,7 +2,7 @@
 if (!isset($_SESSION['loggedin'])) {
     header("Location: ../../index");
 }
-
+include 'backend/account/profile-img.php';
 ?>
 
 <!DOCTYPE html>
