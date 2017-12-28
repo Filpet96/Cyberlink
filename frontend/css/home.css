@@ -165,6 +165,8 @@ td .profession::before {
   padding-right: 10px;
 }
 
+form {}
+
 .create-post-container {
   width: 60%;
   height: 32%;
@@ -199,6 +201,7 @@ td .profession::before {
   margin: 0 auto;
   font-size: calc(0.6vh + 0.6vw);
   resize: none;
+  padding: 0;
 }
 
 .create-post-container .text {
@@ -231,7 +234,7 @@ td .profession::before {
   float: left;
 }
 
-.post-container h1 {
+.post-container .post-fullname {
   padding-left: 12%;
   font-size: calc(0.9vh + 0.9vw);
 }
@@ -292,4 +295,70 @@ td .profession::before {
 
 .post-content p {
   font-size: calc(0.6vh + 0.6vw);
+}
+
+.main {
+  text-align: center;
+  float: left;
+  margin-top: -6%;
+  margin-right: 4%;
+}
+
+.main h1 {
+  font-size: calc(0.8vh + 0.8vw);
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.vote {
+  border: none;
+  background: transparent;
+  width: 30px;
+  height: 10px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.vote:active {
+  outline: none;
+  border: none;
+}
+
+.vote:focus {
+  outline: 0;
+}
+
+.upArrow {
+  x: 0px;
+  y: 0px;
+  enable-background: new 0 0 11.5 6.4;
+}
+
+.upArrow path {
+  fill: #BBBBBB;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  margin: 0;
+}
+
+.downArrow {
+  x: 0px;
+  y: 0px;
+  enable-background: new 0 0 11.5 6.4;
+}
+
+.downArrow path {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #BBBBBB;
+}
+
+#upButton :hover {
+  fill: #6CC576;
+  cursor: pointer;
+}
+
+#downButton :hover {
+  fill: #FF586C;
+  cursor: pointer;
 }
