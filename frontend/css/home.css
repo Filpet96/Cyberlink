@@ -278,7 +278,7 @@ form {}
   height: 8%;
 }
 
-.like-comment input {
+.like-comment .comment {
   background: #51626D;
   color: white;
   border: 0;
@@ -302,6 +302,7 @@ form {}
   float: left;
   margin-top: -6%;
   margin-right: 4%;
+  width: 10%;
 }
 
 .main h1 {
@@ -313,8 +314,7 @@ form {}
 .vote {
   border: none;
   background: transparent;
-  width: 30px;
-  height: 10px;
+  width: 60%;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
@@ -362,3 +362,8 @@ form {}
   fill: #FF586C;
   cursor: pointer;
 }
+
+/*.label_downVote:hover path {
+  fill: #FF586C;
+  cursor: pointer;
+}*/

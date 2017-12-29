@@ -19,7 +19,7 @@ include 'backend/account/profile-img.php';
   background: url(
   <?php if (!empty($edit_row['userPic'])): ?>
   <?php echo "frontend/user_images/".$edit_row['userPic']; ?>
-  <?php else: echo "frontend/user-images/cyberlink.jpg"; ?>
+  <?php else: echo "frontend/user_images/cyberlink.jpg"; ?>
   <?php endif; ?>
   );
   background-position: center;
