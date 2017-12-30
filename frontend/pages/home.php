@@ -2,6 +2,7 @@
 if (!isset($_SESSION['loggedin'])) {
     header("Location: ../../index");
 }
+include 'frontend/templates/biography.php';
 include 'backend/account/profile-img.php';
 $PostCreated = $_SESSION['PostCreated'] ?? '';
 unset($_SESSION['PostCreated']);
@@ -52,15 +53,15 @@ background-size: cover;
 <div class="container">
   <div class="my-profile">
     <div class="username">
-      <h1>Filip Petersson</h1>
+      <h1><?php echo $biography_info[0]['fullname'] ?></h1>
     </div>
     <div class="profile-image"></div>
     <hr>
     <div class="information">
       <table>
       <tr><td><span class="profession">Designer, UI</span></td></tr>
-      <tr><td><span class="location">London, UK</span></td></tr>
-      <tr><td><span class="birthday">May 23, 1996</span></td></tr>
+      <tr><td><span class="location"><?php echo $biography_info[0]['country'] ?></span></td></tr>
+      <tr><td><span class="birthday"><?php echo $biography_info[0]['dateofbirth'] ?></span></td></tr>
     </div>
   </table>
   </div>
@@ -87,14 +88,15 @@ try {
         echo '<form class="" action="backend/posts/vote.php" method="post">';
         echo '<input type="hidden" name="postID" value="'.$row['id'].'">';
         echo '<label class="label_downVote">';
-        echo '<input  type="submit" name="voteUp" onclick="upVote()" class="vote" style="display:none;">';
+        echo '<input type="submit" name="voteUp" onclick="upVote()" class="vote" style="display:none;">';
         echo '<svg class="upArrow vote" id="upButton" viewBox="0 0 11.5 6.4" xml:space="preserve">';
         echo '<path d="M11.4,5.4L6,0C5.9-0.1,5.8-0.1,5.8-0.1c-0.1,0-0.2,0-0.2,0.1
       L0.1,5.4C0,5.6,0,5.7,0.1,5.9l0.4,0.4c0.1,0.1,0.3,0.1,0.4,0l4.8-4.8l4.8,4.8c0.1,0.1,0.3,0.1,0.4,0l0.4-0.4
       C11.5,5.7,11.5,5.6,11.4,5.4z"/>';
         echo '</svg>';
         echo '</label>';
-        echo '<h1 id="">'.$row['votes'].'</h1>';
+        $class = $row['votes'] == 0 ? 'zero' : ($row['votes'] < 0 ? 'neg' : 'pos');
+        echo '<h1 id="scoreCounter" class="' . $class . '">'.$row['votes'].'</h1>';
         echo '<label class="label_downVote">';
         echo '<input type="submit" name="voteDown" onclick="downVote()" class="vote" style="display:none;">';
         echo '<svg class="downArrow vote" id="downButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 11.5 6.4" xml:space="preserve">';
@@ -105,7 +107,7 @@ try {
         echo '</div>';
         echo '</form>';
         echo '<h1 class="post-fullname">'.$row['postTitle'].'</h1>';
-        echo '<div class="time-since-post"><p> Posted '.$row['postDate'].' by Filip Petersson</p></div>';
+        echo '<div class="time-since-post"><p> Posted '.$row['postDate'].' by '.$biography_info[0]['fullname'].'</p></div>';
         echo '</div>';
         echo '</tr>';
     }
@@ -114,32 +116,5 @@ try {
 }
          ?>
   </body>
-  <script>
-  var score = document.getElementById("scoreCounter");
-score.innerHTML = "0";
-var scoreValue = 0;
-checkScore();
 
-function upVote() {
-// scoreValue++;
-score.innerHTML = scoreValue;
-checkScore();
-}
-
-function downVote() {
-// scoreValue--;
-score.innerHTML = scoreValue;
-checkScore();
-}
-
-function checkScore() {
-if (scoreValue < 0) {
-  score.style.color = "#FF586C";
-} else if (scoreValue > 0) {
-  score.style.color = "#6CC576";
-} else {
-  score.style.color = "#666666";
-}
-}
-  </script>
 </html>
