@@ -16,19 +16,26 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if (isset($_POST['voteUp'])) {
-        if ($vote_info[0]['voteUP'] == false) {
+        if (! $vote_info) {
             $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, email, voteUp )
-                                 VALUES ( :votesID, :email, :true)");
+                               VALUES ( :votesID, :email, :true)");
             $sqlVoteCheck->bindParam(':votesID', $postID);
             $sqlVoteCheck->bindParam(':email', $email);
             $sqlVoteCheck->bindParam(':true', $true);
             $voteCheckResult = $sqlVoteCheck->execute();
 
-
             $sqlvoteUp = $pdo->prepare("UPDATE posts SET votes=(votes + 1) WHERE id=:id");
             $sqlvoteUp->bindParam(':id', $postID);
             $voteUpresult = $sqlvoteUp->execute();
             if ($voteUpresult && $voteCheckResult) {
+                header("location: ../../home");
+                exit;
+            }
+        } elseif ($vote_info[0]['voteUP'] == false) {
+            $sqlvoteUp = $pdo->prepare("UPDATE posts SET votes=(votes + 1) WHERE id=:id");
+            $sqlvoteUp->bindParam(':id', $postID);
+            $voteUpresult = $sqlvoteUp->execute();
+            if ($voteUpresult) {
                 header("location: ../../home");
                 exit;
             }
