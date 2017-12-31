@@ -355,11 +355,6 @@ form {}
   cursor: pointer;
 }
 
-/*.label_downVote:hover path {
-  fill: #FF586C;
-  cursor: pointer;
-}*/
-
 h1.zero {
   color: #666666;
 }
@@ -370,4 +365,16 @@ h1.pos {
 
 h1.neg {
   color: #FF586C;
+}
+
+.redvote path {
+  fill: #FF586C;
+}
+
+.greenvote path {
+  fill: #6CC576;
+}
+
+svg.grayvote {
+  fill: black;
 }

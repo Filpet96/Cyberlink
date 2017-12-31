@@ -66,7 +66,7 @@ unset($_SESSION['Accountfail']);
     <div class="row">
       <h4>Account</h4>
       <div class="input-group input-group-icon">
-        <input type="text" name="fullname" placeholder="Full Name"/>
+        <input type="text" name="fullname" placeholder="Full Name" required/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
       <div class="input-group input-group-icon">
@@ -83,13 +83,13 @@ unset($_SESSION['Accountfail']);
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="dd" placeholder="DD"/>
+            <input type="text" name="yy" placeholder="YY" pattern="[1-9]{2}" required title="Write date like this, example: 96-05-23"/>
           </div>
           <div class="col-third">
-            <input type="text" name="mm" placeholder="MM"/>
+            <input type="text" name="mm" placeholder="MM" pattern="[0-9]{2}" required title="Write date like this, example: 96-05-23"/>
           </div>
           <div class="col-third">
-            <input type="text" name="yy" placeholder="YYYY"/>
+            <input type="text" name="dd" placeholder="DD" pattern="[0-9]{2}" required title="Write date like this, example: 96-05-23"/>
           </div>
         </div>
       </div>

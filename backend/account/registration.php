@@ -7,7 +7,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $fullname = $_POST['fullname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$dateofbirth = $_POST['yy'] .'-'. $_POST['mm'] .'-'. $_POST['dd'];
+$dateofbirth =  '19'. $_POST['yy'] .'-'. $_POST['mm'] .'-'. $_POST['dd'];
 
 $password = password_hash($password, PASSWORD_BCRYPT);
 
