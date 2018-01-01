@@ -61,7 +61,7 @@ unset($_SESSION['Wrong_Password']);
       <?php endif; ?>">
       </fieldset>
       <fieldset>
-        <input type="password" name="new_password" id="new_password" placeholder="New password" pattern=".{6,}" required title="6 characters min." >
+        <input type="password" name="new_password" id="new_password" placeholder="New password" pattern=".{6,}" sometimes title="6 characters min." >
       </fieldset>
       </div>
       <div class="save-information">

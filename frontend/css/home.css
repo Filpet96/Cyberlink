@@ -345,12 +345,12 @@ form {}
   fill: #BBBBBB;
 }
 
-#upButton :hover {
+#upButton:hover path {
   fill: #6CC576;
   cursor: pointer;
 }
 
-#downButton :hover {
+#downButton:hover path {
   fill: #FF586C;
   cursor: pointer;
 }
