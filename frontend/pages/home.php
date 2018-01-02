@@ -10,7 +10,6 @@ unset($_SESSION['PostCreated']);
 <?php if ($PostCreated !== ''): ?>
 <?php echo "<script>alert('$PostCreated');</script>" ?>
 <?php endif;?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -43,24 +42,20 @@ background-size: cover;
   </style>
   </head>
   <body>
-<header>
-  <nav>
-    <li><a class="home" href="../../home"><div class="homeicon"></div></a></li>
-    <li><a class="settings" href="../../profile-settings"><div class="settingsicon"></div></a></li>
-    <li class="logoutli"><a class="logout" href="../../Logging-out"><div class="logouticon"></div></a></li>
-  </nav>
-</header>
+<?php include_once 'frontend/templates/header.php'; ?>
 <div class="container">
   <div class="my-profile">
-    <div class="username">
-      <h1><?php echo $biography_info[0]['fullname'] ?></h1>
-    </div>
+
     <div class="profile-image"></div>
     <hr>
     <div class="information">
       <table>
-      <tr><td><span class="profession"><?php echo $user_id ?></span></td></tr>
-      <tr><td><span class="location"><?php echo $biography_info[0]['country'] ?></span></td></tr>
+      <tr><td><span class="profession"><?php echo $biography_info[0]['fullname'] ?></span></td></tr>
+      <tr><td><span class="location">
+      <?php if (!empty($biography_info[0]['country'])): ?>
+      <?php echo $biography_info[0]['country'] ?>
+    <?php else: echo "Add location"; ?>
+      <?php endif; ?></span></td></tr>
       <tr><td><span class="birthday"><?php echo $biography_info[0]['dateofbirth'] ?></span></td></tr>
     </div>
   </table>
@@ -77,17 +72,25 @@ background-size: cover;
 </div>
 </form>
 <?php
+ include 'frontend/templates/time-ago.php';
 try {
-    $stmt = $pdo->query('SELECT id, postTitle, postDate, votes FROM posts ORDER BY votes DESC');
+    $stmt = $pdo->query('SELECT id, userid, postTitle, postDate, votes FROM posts ORDER BY votes DESC');
     while ($row = $stmt->fetch()) {
         $postID = $row['id'];
-        $CheckVote = $pdo->prepare("SELECT * FROM votes WHERE email=:email AND votesID=:postID");
-        $CheckVote->bindParam(':email', $email);
+        $fullname = $biography_info[0]['fullname'];
+        $CheckVote = $pdo->prepare("SELECT * FROM votes WHERE userid=:user_id AND votesID=:postID");
+        $CheckVote->bindParam(':user_id', $user_id);
         $CheckVote->bindParam(':postID', $postID);
         $CheckVote->execute();
         $CheckVote = $CheckVote->fetchAll(PDO::FETCH_ASSOC);
+        $fetched_id = $row['userid'];
+        $fullname_post = $pdo->prepare("SELECT fullname FROM user_biography WHERE userid=:fetched_id");
+        $fullname_post->execute(array(':fetched_id'=>$fetched_id));
+        $fullname_post_fetched = $fullname_post->fetch(PDO::FETCH_ASSOC);
+        extract($fullname_post_fetched);
         $class = $row['votes'] == 0 ? 'zero' : ($row['votes'] < 0 ? 'neg' : 'pos'); ?>
         <div class="post-container">
+
         <form class="like-comment" action="frontend/templates/comment.php" method="post">
         <input class="comment" type="submit" name="submit" value="Comment">
         </form>
@@ -126,7 +129,7 @@ try {
          </div>
          </form>
          <h1 class="post-fullname"><?php echo $row['postTitle'] ?></h1>
-         <div class="time-since-post"><p> Posted <?php echo $row['postDate']?> by <?php echo $biography_info[0]['fullname'] ?></p></div>
+         <div class="time-since-post"><p> Posted <?php echo time_elapsed_string($row['postDate'], true); ?> by <?php echo $fullname_post_fetched['fullname']?></p></div>
          </div>
          </tr>
         <?php

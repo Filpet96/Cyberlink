@@ -37,13 +37,7 @@ unset($_SESSION['Wrong_Password']);
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
   <body>
-<header>
-  <nav>
-    <li><a class="home" href="../../home"><div class="homeicon"></div></a></li>
-    <li><a class="settings" href="../../profile-settings"><div class="settingsicon"></div></a></li>
-    <li class="logoutli"><a class="logout" href="../../Logging-out"><div class="logouticon"></div></a></li>
-  </nav>
-</header>
+<?php include_once 'frontend/templates/header.php'; ?>
 <div class="container">
   <div class="settings-container">
     <nav>
@@ -54,14 +48,14 @@ unset($_SESSION['Wrong_Password']);
       <div class="information-container">
         <form class="" name="email" action="backend/account/update-account.php" method="post">
       <fieldset>
-        <input type="password" name="old_password" id="old_password" placeholder="Old password" required>
+        <input type="password" name="old_password" id="old_password" placeholder="Old password" required autocomplete="off">
       </fieldset>
       <fieldset>
-        <input type="text" name="email" id="email" placeholder="Email" value="<?php if (!empty($biography_info[0]['email'])): ?><?php echo $biography_info[0]['email'];?><?php else: echo "Email";?>
+        <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" value="<?php if (!empty($biography_info[0]['email'])): ?><?php echo $biography_info[0]['email'];?><?php else: echo "Email";?>
       <?php endif; ?>">
       </fieldset>
       <fieldset>
-        <input type="password" name="new_password" id="new_password" placeholder="New password" pattern=".{6,}" sometimes title="6 characters min." >
+        <input type="password" name="new_password" id="new_password" autocomplete="off" placeholder="New password" pattern=".{6,}" sometimes title="6 characters min." >
       </fieldset>
       </div>
       <div class="save-information">

@@ -5,6 +5,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // ASSIGN VARIABLE FROM FORM
 $email = $_SESSION['loggedin'];
+$user_id = $_SESSION['user_id'];
 
 $postTitle = $_POST['title'];
 $postCont = $_POST['content'];
@@ -15,11 +16,11 @@ if (empty($postTitle) && empty($postCont)) {
     echo "You must have a title and content!";
 } else {
     //INSERT DATA INTO DATABASE
-    $sqlPost = $pdo->prepare("INSERT INTO posts ( email, postTitle, postCont, postDate, votes )
-                           VALUES ( :email, :postTitle, :postCont, :postDate, 0 )");
+    $sqlPost = $pdo->prepare("INSERT INTO posts ( userid, postTitle, postCont, postDate, votes )
+                           VALUES ( :user_id, :postTitle, :postCont, :postDate, 0 )");
 
     // EXECUTE AND PREPARE
-    $sqlPost->bindParam(':email', $email);
+    $sqlPost->bindParam(':user_id', $user_id);
     $sqlPost->bindParam(':postTitle', $postTitle);
     $sqlPost->bindParam(':postCont', $postCont);
     $sqlPost->bindParam(':postDate', $postDate);

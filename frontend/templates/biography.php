@@ -10,8 +10,8 @@ $user_id = $_SESSION['user_id'];
 try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $biography_info = $pdo->prepare("SELECT * FROM user_biography WHERE email=:email");
-    $biography_info->bindParam(':email', $email);
+    $biography_info = $pdo->prepare("SELECT * FROM user_biography WHERE userid=:user_id");
+    $biography_info->bindParam(':user_id', $user_id);
     $biography_info->execute();
     $biography_info = $biography_info->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {

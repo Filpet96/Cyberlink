@@ -21,10 +21,10 @@ if ($stmt->fetch()) {
     echo "That email already exist!";
 } else {
     //INSERT DATA INTO DATABASE
-    $sql = "INSERT INTO users ( fullname, password, email, dateofbirth )
-  VALUES ( :fullname, :password, :email, :dateofbirth )";
+    $sql = "INSERT INTO users ( password, email, dateofbirth )
+  VALUES ( :password, :email, :dateofbirth )";
     $query = $pdo->prepare($sql);
-    $result = $query->execute(array(':fullname' => $fullname, ':password' => $password, ':email' => $email));
+    $result = $query->execute(array(':password' => $password, ':email' => $email));
 
     $get_user_id = $pdo->prepare('SELECT userid FROM users WHERE email=:email');
     $get_user_id->execute(array(':email'=>$email));

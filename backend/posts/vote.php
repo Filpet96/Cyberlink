@@ -6,12 +6,15 @@ include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
 
   $email = $_SESSION['loggedin'];
+  $user_id = $_SESSION['user_id'];
+
+
   $postID   = $_POST['postID'];
   $true = "true";
   $false = "false";
-  $vote_info = $pdo->prepare("SELECT * FROM votes WHERE votesID=:votesID AND email=:email");
+  $vote_info = $pdo->prepare("SELECT * FROM votes WHERE votesID=:votesID AND userid=:user_id");
   $vote_info->bindParam(':votesID', $postID);
-  $vote_info->bindParam(':email', $email);
+  $vote_info->bindParam(':user_id', $user_id);
   $vote_info->execute();
   $vote_info = $vote_info->fetchAll(PDO::FETCH_ASSOC);
 try {
@@ -19,10 +22,10 @@ try {
 
     if (isset($_POST['voteUp'])) {
         if (! $vote_info) {
-            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, email, voteUp )
-                               VALUES ( :votesID, :email, :true)");
+            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, userid, voteUp )
+                               VALUES ( :votesID, :user_id, :true)");
             $sqlVoteCheck->bindParam(':votesID', $postID);
-            $sqlVoteCheck->bindParam(':email', $email);
+            $sqlVoteCheck->bindParam(':user_id', $user_id);
             $sqlVoteCheck->bindParam(':true', $true);
             $voteCheckResult = $sqlVoteCheck->execute();
 
@@ -52,10 +55,10 @@ try {
     }
     if (isset($_POST['voteDown'])) {
         if (! $vote_info) {
-            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, email, voteUp )
-                               VALUES ( :votesID, :email, :false)");
+            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, userid, voteUp )
+                               VALUES ( :votesID, :user_id, :false)");
             $sqlVoteCheck->bindParam(':votesID', $postID);
-            $sqlVoteCheck->bindParam(':email', $email);
+            $sqlVoteCheck->bindParam(':user_id', $user_id);
             $sqlVoteCheck->bindParam(':false', $false);
             $voteCheckResult = $sqlVoteCheck->execute();
 

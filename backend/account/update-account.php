@@ -6,9 +6,10 @@ include($_SERVER["DOCUMENT_ROOT"] . "/system/connection.php");
 
 
 $email = $_SESSION['loggedin'];
+$user_id = $_SESSION['user_id'];
 
-$account_info = $pdo->prepare("SELECT * FROM users WHERE email=:email");
-$account_info->bindParam(':email', $email);
+$account_info = $pdo->prepare("SELECT * FROM users WHERE userid=:user_id");
+$account_info->bindParam(':user_id', $user_id);
 $account_info->execute();
 $account_info = $account_info->fetchAll(PDO::FETCH_ASSOC);
 
@@ -21,13 +22,13 @@ try {
         $new_password = password_hash($new_password, PASSWORD_BCRYPT);
         if (password_verify($old_password, $account_info[0]['password'])) {
             if (!empty($new_password_no_hash) && !empty($new_email) && $new_email !== $email) {
-                $update_email = $pdo->prepare("UPDATE users, votes, user_biography, posts SET email = :email_new WHERE email=:email");
+                $update_email = $pdo->prepare("UPDATE users, user_biography SET email = :email_new WHERE userid=:user_id");
                 $update_email->bindParam(':email_new', $new_email);
-                $update_email->bindParam(':email', $email);
+                $update_email->bindParam(':user_id', $user_id);
                 $update_result_email = $update_email->execute();
-                $update_password = $pdo->prepare("UPDATE users SET password = :new_password WHERE email=:email");
+                $update_password = $pdo->prepare("UPDATE users SET password = :new_password WHERE userid=:user_id");
                 $update_password->bindParam(':new_password', $new_password);
-                $update_password->bindParam(':email', $email);
+                $update_password->bindParam(':user_id', $user_id);
                 $update_result = $update_password->execute();
                 if ($update_result && $update_result_email) {
                     $_SESSION['Password_Email_Changed'] = "Password and email has been updated.";
@@ -35,21 +36,25 @@ try {
                     exit;
                 }
             }
-            if (!empty($new_email) && $new_email !== $email) {
-                $update_email = $pdo->prepare("UPDATE users, votes, user_biography, posts SET email = :email_new WHERE email=:email");
+            if (!empty($new_email) && $new_email !== $account_info[0]['email']) {
+                $update_email = $pdo->prepare("UPDATE users SET email = :email_new WHERE userid=:user_id");
+                $update_email2 = $pdo->prepare("UPDATE user_biography SET email = :email_new WHERE userid=:user_id");
                 $update_email->bindParam(':email_new', $new_email);
-                $update_email->bindParam(':email', $email);
+                $update_email2->bindParam(':email_new', $new_email);
+                $update_email->bindParam(':user_id', $user_id);
+                $update_email2->bindParam(':user_id', $user_id);
                 $update_result_email = $update_email->execute();
-                if ($update_result_email) {
+                $update_result_email2 = $update_email2->execute();
+                if ($update_result_email && $update_result_email2) {
                     $_SESSION['Email_Changed'] = "Email has been updated.";
                     header("location: ../../account-settings");
                     exit;
                 }
             }
             if (!empty($new_password_no_hash)) {
-                $update_password = $pdo->prepare("UPDATE users SET password = :new_password WHERE email=:email");
+                $update_password = $pdo->prepare("UPDATE users SET password = :new_password WHERE userid=:user_id");
                 $update_password->bindParam(':new_password', $new_password);
-                $update_password->bindParam(':email', $email);
+                $update_password->bindParam(':user_id', $user_id);
                 $update_result = $update_password->execute();
                 if ($update_result) {
                     $_SESSION['Password_Changed'] = "Password has been changed.";
