@@ -46,7 +46,7 @@ try {
                     exit;
                 }
             }
-            if (!empty($new_password)) {
+            if (!empty($new_password_no_hash)) {
                 $update_password = $pdo->prepare("UPDATE users SET password = :new_password WHERE email=:email");
                 $update_password->bindParam(':new_password', $new_password);
                 $update_password->bindParam(':email', $email);

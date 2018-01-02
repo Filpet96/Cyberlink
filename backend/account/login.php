@@ -14,7 +14,7 @@ $loginquery = $loginquery->fetchAll(PDO::FETCH_ASSOC);
 
 if (!empty($loginquery)) {
     if (password_verify($password, $loginquery[0]['password'])) {
-        $_SESSION['user_id'] = $loginquery[0]['id'];
+        $_SESSION['user_id'] = $loginquery[0]['userid'];
         $_SESSION['loggedin'] = $loginquery[0]['email'];
         $_SESSION['user_fullname'] = $loginquery[0]['fullname'];
         // $_SESSION['user_dateofbirth'] = $loginquery[0]['dateofbirth'];

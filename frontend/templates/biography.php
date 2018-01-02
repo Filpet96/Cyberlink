@@ -5,6 +5,7 @@ if (!isset($_SESSION)) {
 require $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
 $email = $_SESSION['loggedin'];
+$user_id = $_SESSION['user_id'];
 
 try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

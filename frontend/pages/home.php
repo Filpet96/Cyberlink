@@ -59,7 +59,7 @@ background-size: cover;
     <hr>
     <div class="information">
       <table>
-      <tr><td><span class="profession">Designer, UI</span></td></tr>
+      <tr><td><span class="profession"><?php echo $user_id ?></span></td></tr>
       <tr><td><span class="location"><?php echo $biography_info[0]['country'] ?></span></td></tr>
       <tr><td><span class="birthday"><?php echo $biography_info[0]['dateofbirth'] ?></span></td></tr>
     </div>

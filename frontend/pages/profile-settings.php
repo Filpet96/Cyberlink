@@ -4,7 +4,12 @@ if (!isset($_SESSION['loggedin'])) {
 }
 include 'frontend/templates/biography.php';
 include 'backend/account/profile-img.php';
+$Image_Updated = $_SESSION['Image_Updated'] ?? '';
+unset($_SESSION['Image_Updated']);
 ?>
+<?php if ($Image_Updated !== ''): ?>
+<?php echo "<script>alert('$Image_Updated');</script>" ?>
+<?php endif;?>
 
 <!DOCTYPE html>
 <html>

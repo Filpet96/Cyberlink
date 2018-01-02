@@ -23,14 +23,20 @@ if ($stmt->fetch()) {
     //INSERT DATA INTO DATABASE
     $sql = "INSERT INTO users ( fullname, password, email, dateofbirth )
   VALUES ( :fullname, :password, :email, :dateofbirth )";
-    $sql_biography = "INSERT INTO user_biography ( fullname, dateofbirth, email )
-VALUES ( :fullname, :dateofbirth, :email )";
-
-    // EXECUTE AND PREPARE
     $query = $pdo->prepare($sql);
     $result = $query->execute(array(':fullname' => $fullname, ':password' => $password, ':email' => $email));
+
+    $get_user_id = $pdo->prepare('SELECT userid FROM users WHERE email=:email');
+    $get_user_id->execute(array(':email'=>$email));
+    $user_id_fetched = $get_user_id->fetch(PDO::FETCH_ASSOC);
+    extract($user_id_fetched);
+    $user_id = $user_id_fetched['userid'];
+
+    $sql_biography = "INSERT INTO user_biography ( userid, fullname, dateofbirth, email )
+VALUES ( :userid, :fullname, :dateofbirth, :email )";
+
     $query_biography = $pdo->prepare($sql_biography);
-    $result_biography = $query_biography->execute(array(':fullname' => $fullname, ':dateofbirth' => $dateofbirth, ':email' => $email));
+    $result_biography = $query_biography->execute(array(':userid' => $user_id, ':fullname' => $fullname, ':dateofbirth' => $dateofbirth, ':email' => $email));
 
     //EXECUTE QUERY
     if ($result && $result_biography) {
