@@ -247,6 +247,7 @@ form {
 .post-container .post-fullname {
   padding-left: 5%;
   font-size: calc(0.7vh + 0.7vw);
+  width: 67%;
 }
 
 .time-since-post {
@@ -426,10 +427,6 @@ a img:hover {
   border-radius: 4px;
 }
 
-.require {
-  color: #666;
-}
-
 label small {
   color: #999;
   font-weight: normal;
@@ -440,15 +437,21 @@ label {
 }
 
 .container_create_post {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
   width: 62%;
   margin-left: 27%;
   border-radius: 4px;
+  color: white;
 }
 
 .row {
   display: flex;
   justify-content: center;
+}
+
+.row h1 {
+  text-align: center;
+  font-size: calc(1.3vh + 1.3vw);
 }
 
 .post_footer {
@@ -465,4 +468,12 @@ label {
   float: left;
   margin: 0 5px;
   list-style-type: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-control {
+  font-size: calc(0.6vh + 0.6vw);
 }

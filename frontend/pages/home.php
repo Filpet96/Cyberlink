@@ -18,7 +18,7 @@ unset($_SESSION['PostCreated']);
     <title>Cyberlink</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-    <script src="frontend/javascript/delete-post.js" charset="utf-8"></script>
+
     <link href="frontend/css/home.css" rel="stylesheet">
     <style>
     .profile-image {
@@ -53,9 +53,7 @@ background-size: cover;
     <div class="information">
       <table>
       <tr><td><span class="profession"><?php echo $biography_info[0]['fullname'] ?></span></td></tr>
-      <tr><td><span class="location">
-      <?php if (!empty($biography_info[0]['country'])): ?>
-      <?php echo $biography_info[0]['country'] ?>
+      <tr><td><span class="location"><?php if (!empty($biography_info[0]['country'])): ?><?php echo $biography_info[0]['country'] ?>
     <?php else: echo "Add location"; ?>
       <?php endif; ?></span></td></tr>
       <tr><td><span class="birthday"><?php echo $biography_info[0]['dateofbirth'] ?></span></td></tr>
@@ -85,7 +83,7 @@ background-size: cover;
 
     		    <div class="form-group">
     		        <label for="description">Description</label>
-    		        <textarea rows="5" class="form-control" name="content" ></textarea>
+    		        <textarea rows="2" class="form-control" name="content" ></textarea>
     		    </div>
 
     		    <div class="form-group">
@@ -95,9 +93,6 @@ background-size: cover;
     		    <div class="form-group">
     		        <button type="submit" class="btn btn-primary">
     		            Create
-    		        </button>
-    		        <button class="btn btn-default">
-    		            Cancel
     		        </button>
     		    </div>
 
@@ -127,11 +122,14 @@ try {
 
         <div class="post-container">
         <div class="post_footer">
-          <ul>
-            <li><a href="#">0 comments</a></li>
-            <li><a class="delete_post" href="javascript:delpost('<?php echo $row['id']; ?>','<?php echo $row['postTitle']; ?>')">Delete post</a></li>
-          </ul>
+          <form class="deletepost" action="backend/posts/delete-post.php" method="post">
+            <button>Delete post</button>
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+            <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($row['postTitle']); ?>">
+        </form>
         </div>
+
+
         <div class="main_content">
         <div class="main">
         <form class="" action="backend/posts/vote.php" method="post">
@@ -168,10 +166,12 @@ try {
 
          </div>
          <div class="link_svg_title">
-         <a href="<?php echo $row['postUrl']; ?>">
+         <a href="<?php echo $row['postUrl']; ?>" target="_blank">
            <img src="frontend/images/link.svg" alt="">
          </a>
+
          <h1 class="post-fullname"><?php echo $row['postTitle'] ?></h1>
+
          </div>
          </div>
          </form>
@@ -189,5 +189,14 @@ try {
          ?>
   </body>
 
-
+  <script>
+      addEventListener("submit", function (event) {
+          if (event.target.classList.contains("deletepost")) {
+              var elements = event.target.elements;
+              if (!confirm("Are you sure you want to delete '" + elements.postTitle.value + "'?")) {
+                  event.preventDefault();
+              }
+          }
+      });
+  </script>
 </html>
