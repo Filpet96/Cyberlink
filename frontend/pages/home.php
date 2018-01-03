@@ -16,8 +16,10 @@ unset($_SESSION['PostCreated']);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Cyberlink</title>
-    <link href="frontend/css/home.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <script src="frontend/javascript/delete-post.js" charset="utf-8"></script>
+    <link href="frontend/css/home.css" rel="stylesheet">
     <style>
     .profile-image {
   background: url(
@@ -61,20 +63,53 @@ background-size: cover;
   </table>
   </div>
 </div>
-<form class="" action="backend/posts/create-post.php" method="post">
-<div class="create-post-container">
-  <h1>Create Post</h1>
-  <input type="text" name="title" value="" placeholder="Title">
-  <textarea class="text" type="text" name="content" value="Text" rows="5" placeholder="Text area"></textarea>
-  <div class="create-post">
-    <input type="submit" name="submit" value="Post">
-  </div>
+<div class="container_create_post">
+	<div class="row">
+
+	    <div class="col-md-8 col-md-offset-2">
+
+    		<h1>Create post</h1>
+
+    		<form action="backend/posts/create-post.php" method="POST">
+
+    		    <div class="form-group has-error">
+    		        <label for="title">Title <span class="require">*</span> <small></small></label>
+    		        <input type="text" class="form-control" name="title" />
+
+    		    </div>
+
+    		    <div class="form-group">
+    		        <label for="url">Url <span class="require">*</span></label>
+    		        <input type="url" class="form-control" name="url" />
+    		    </div>
+
+    		    <div class="form-group">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" name="content" ></textarea>
+    		    </div>
+
+    		    <div class="form-group">
+    		        <p><span class="require">*</span> - required fields</p>
+    		    </div>
+
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-primary">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default">
+    		            Cancel
+    		        </button>
+    		    </div>
+
+    		</form>
+		</div>
+
+	</div>
 </div>
-</form>
 <?php
  include 'frontend/templates/time-ago.php';
 try {
-    $stmt = $pdo->query('SELECT id, userid, postTitle, postDate, votes FROM posts ORDER BY votes DESC');
+    $stmt = $pdo->query('SELECT id, userid, postTitle, postDate, postUrl, votes FROM posts ORDER BY votes DESC');
     while ($row = $stmt->fetch()) {
         $postID = $row['id'];
         $fullname = $biography_info[0]['fullname'];
@@ -89,11 +124,15 @@ try {
         $fullname_post_fetched = $fullname_post->fetch(PDO::FETCH_ASSOC);
         extract($fullname_post_fetched);
         $class = $row['votes'] == 0 ? 'zero' : ($row['votes'] < 0 ? 'neg' : 'pos'); ?>
-        <div class="post-container">
 
-        <form class="like-comment" action="frontend/templates/comment.php" method="post">
-        <input class="comment" type="submit" name="submit" value="Comment">
-        </form>
+        <div class="post-container">
+        <div class="post_footer">
+          <ul>
+            <li><a href="#">0 comments</a></li>
+            <li><a class="delete_post" href="javascript:delpost('<?php echo $row['id']; ?>','<?php echo $row['postTitle']; ?>')">Delete post</a></li>
+          </ul>
+        </div>
+        <div class="main_content">
         <div class="main">
         <form class="" action="backend/posts/vote.php" method="post">
         <input type="hidden" name="postID" value="<?php echo $row['id'] ?>">
@@ -126,12 +165,22 @@ try {
       		c-6.8-7.2-15.4-10.9-25.7-10.9c-10.1,0-18.7,3.6-26,10.9l-21.4,21.4c-7,7.4-10.6,16-10.6,25.7C0,220,3.5,228.7,10.6,236.1z"/>
          </svg>
          </label>
+
+         </div>
+         <div class="link_svg_title">
+         <a href="<?php echo $row['postUrl']; ?>">
+           <img src="frontend/images/link.svg" alt="">
+         </a>
+         <h1 class="post-fullname"><?php echo $row['postTitle'] ?></h1>
+         </div>
          </div>
          </form>
-         <h1 class="post-fullname"><?php echo $row['postTitle'] ?></h1>
+
          <div class="time-since-post"><p> Posted <?php echo time_elapsed_string($row['postDate'], true); ?> by <?php echo $fullname_post_fetched['fullname']?></p></div>
+
          </div>
          </tr>
+
         <?php
     }
 } catch (PDOException $e) {
@@ -139,5 +188,6 @@ try {
 }
          ?>
   </body>
+
 
 </html>

@@ -29,7 +29,7 @@ nav li {
   float: left;
 }
 
-li a {
+nav li a {
   color: white;
   width: 100%;
   height: 100%;
@@ -166,7 +166,14 @@ td .profession::before {
   padding-right: 10px;
 }
 
-form {}
+form {
+  margin-bottom: 0 !important;
+}
+
+.main_content .main {
+  display: flex;
+  align-items: center;
+}
 
 .create-post-container {
   width: 60%;
@@ -193,6 +200,11 @@ form {}
   height: 20%;
   font-size: calc(0.9vh + 0.9vw);
   margin: 0 auto;
+  margin-top: 1%;
+}
+
+.create-post-container .url_input {
+  font-size: calc(0.6vh + 0.6vw);
 }
 
 .create-post-container textarea {
@@ -207,12 +219,11 @@ form {}
 
 .create-post-container .text {
   margin-top: 1.5%;
-  height: 40%;
 }
 
 .post-container {
   width: 62%;
-  height: auto;
+  height: 79px;
   background: white;
   display: inline-block;
   position: relative;
@@ -234,8 +245,8 @@ form {}
 }
 
 .post-container .post-fullname {
-  padding-left: 12%;
-  font-size: calc(0.9vh + 0.9vw);
+  padding-left: 5%;
+  font-size: calc(0.7vh + 0.7vw);
 }
 
 .time-since-post {
@@ -247,9 +258,10 @@ form {}
 
 .time-since-post p {
   margin: 0;
-  font-size: calc(0.6vh + 0.6vw);
+  font-size: calc(0.4vh + 0.4vw);
 }
 
+/*
 .create-post input {
   width: 15%;
   height: 35px;
@@ -259,7 +271,7 @@ form {}
   background: #51626D;
   color: white;
   margin-top: 1%;
-}
+} */
 
 .create-post input:hover {
   cursor: pointer;
@@ -272,16 +284,10 @@ form {}
   width: 100%;
 }
 
-.like-comment {
+.comment {
   position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.like-comment .comment {
-  position: absolute;
-  bottom: 10%;
-  left: 10%;
+  bottom: 0;
+  right: 10%;
   color: blue;
 }
 
@@ -290,10 +296,10 @@ form {}
 }
 
 .main {
+  position: relative;
   text-align: center;
   float: left;
-  margin-left: 1%;
-  margin-top: 1%;
+  height: 100%;
   width: 5%;
 }
 
@@ -377,4 +383,86 @@ h1.neg {
 
 svg.grayvote {
   fill: black;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+a img {
+  width: 50px;
+  height: 50px;
+}
+
+a img:hover {
+  opacity: 0.5;
+}
+
+.link_svg_title {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
+}
+
+.main_content {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+  height: 100%;
+}
+
+.create_post_container_1 {
+  width: 62%;
+  height: auto;
+  background-color: white;
+  margin-left: 27%;
+  border-radius: 4px;
+}
+
+.require {
+  color: #666;
+}
+
+label small {
+  color: #999;
+  font-weight: normal;
+}
+
+label {
+  margin-bottom: 0 !important;
+}
+
+.container_create_post {
+  background-color: white;
+  width: 62%;
+  margin-left: 27%;
+  border-radius: 4px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.post_footer {
+  position: absolute;
+  bottom: 0;
+  right: 2%;
+  font-size: calc(0.45vh + 0.45vw);
+  z-index: 999;
+}
+
+.post_footer .delete_post {}
+
+.post_footer li {
+  float: left;
+  margin: 0 5px;
+  list-style-type: none;
 }
