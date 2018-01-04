@@ -14,11 +14,11 @@ function time_elapsed_string($datetime, $full = false)
         'w' => 'week',
         'd' => 'day',
         'h' => 'hour',
-        'i' => 'minute',
+        'i' => 'min',
     );
     foreach ($string as $k => &$v) {
         if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
         } else {
             unset($string[$k]);
         }

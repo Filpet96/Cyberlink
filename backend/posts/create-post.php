@@ -17,7 +17,7 @@ if (empty($postTitle) && empty($postCont)) {
     echo "You must have a title and content!";
 } else {
     //INSERT DATA INTO DATABASE
-    $sqlPost = $pdo->prepare("INSERT INTO posts ( userid, postTitle, postCont, postDate, postUrl, votes )
+    $sqlPost = $pdo->prepare("INSERT INTO posts ( userid, postTitle, postCont, postDate, postUrl, postVotes )
                            VALUES ( :user_id, :postTitle, :postCont, :postDate, :postUrl, 0 )");
 
     // EXECUTE AND PREPARE

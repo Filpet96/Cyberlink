@@ -12,7 +12,7 @@ $account_info = $pdo->prepare("SELECT * FROM users WHERE email=:email");
 $account_info->bindParam(':email', $email);
 $account_info->execute();
 $account_info = $account_info->fetchAll(PDO::FETCH_ASSOC);
-
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try {
     if (isset($_POST["update_account"])) {
         $old_email = $_POST['email'];

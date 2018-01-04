@@ -43,26 +43,10 @@ unset($_SESSION['Accountfail']);
         </div>
 
         <div class="user_options-forms" id="user_options-forms">
-          <div class="user_forms-login">
-            <h2 class="forms_title">Login</h2>
-            <form class="forms_form" action="Logging-in" method="POST">
-              <fieldset class="forms_fieldset">
-                <div class="forms_field">
-                  <input type="email" placeholder="Email" name="email" class="forms_field-input" required autofocus />
-                </div>
-                <div class="forms_field">
-                  <input type="password" placeholder="Password" name="password" class="forms_field-input" required />
-                </div>
-              </fieldset>
-              <div class="forms_buttons">
-                <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                <input type="submit" value="login" name="login" class="forms_buttons-action">
-              </div>
-            </form>
-          </div>
+          <?php include 'frontend/templates/login_newpassword.php'; ?>
           <div class="user_forms-signup">
             <h2 class="forms_title">Sign Up</h2>
-                        <form class="forms_form" action="backend/account/formredirect.php" method="POST">
+            <form class="forms_form" action="backend/account/formredirect.php" method="POST">
     <div class="row">
       <h4>Account</h4>
       <div class="input-group input-group-icon">

@@ -1,17 +1,18 @@
 <?php
 require $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 try {
-    $stmt = $pdo->prepare('SELECT id, userid, postTitle, postCont, postDate, postUrl, postImage FROM posts WHERE id = :id');
-    $stmt->execute(array(':id' => $_POST['id']));
+    $stmt = $pdo->prepare('SELECT postID, userid, postTitle, postCont, postDate, postUrl, postImage FROM posts WHERE postID = :postID');
+    $stmt->execute(array(':postID' => $_POST['id']));
     $row = $stmt->fetch();
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
 ?>
-    		<h1>Create post</h1>
+
         <?php
         if (isset($_POST['edit_post'])) {
             ?>
+            <h1>Edit post</h1>
           <form action="backend/posts/edit-post.php" method="POST">
       		    <div class="form-group has-error">
       		        <label for="title">Title <span class="require">*</span> <small></small></label>
@@ -32,11 +33,13 @@ try {
       		        <button type="submit" class="btn btn-primary">
       		            Edit Post
       		        </button>
+                  <input type="hidden" name="postID" value="<?php echo $row['postID']?>">
       		    </div>
       		</form>
           <?php
         } else {
             ?>
+            <h1>Create post</h1>
           <form action="backend/posts/create-post.php" method="POST">
       		    <div class="form-group has-error">
       		        <label for="title">Title <span class="require">*</span> <small></small></label>

@@ -223,7 +223,7 @@ form {
 
 .post-container {
   width: 62%;
-  height: 12%;
+  height: 14%;
   background: white;
   display: inline-block;
   position: relative;
@@ -476,6 +476,20 @@ button:hover {
 
 textarea {
   resize: none;
+}
+
+.deletepost button {
+  border: none;
+  color: red;
+}
+
+.editpost button {
+  border: none;
+  color: #7A7C7F;
+}
+
+button:hover {
+  text-decoration: underline;
 }
 
 .form-control {

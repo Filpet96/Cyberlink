@@ -73,9 +73,9 @@ background-size: cover;
 
  include 'frontend/templates/time-ago.php';
 try {
-    $stmt = $pdo->query('SELECT id, userid, postTitle, postDate, postUrl, votes FROM posts ORDER BY votes DESC');
+    $stmt = $pdo->query('SELECT postID, userid, postTitle, postDate, postUrl, postVotes FROM posts ORDER BY postVotes DESC');
     while ($row = $stmt->fetch()) {
-        $postID = $row['id'];
+        $postID = $row['postID'];
         $fullname = $biography_info[0]['fullname'];
         $CheckVote = $pdo->prepare("SELECT * FROM votes WHERE userid=:user_id AND votesID=:postID");
         $CheckVote->bindParam(':user_id', $user_id);
@@ -87,7 +87,7 @@ try {
         $fullname_post->execute(array(':fetched_id'=>$fetched_id));
         $fullname_post_fetched = $fullname_post->fetch(PDO::FETCH_ASSOC);
         extract($fullname_post_fetched);
-        $class = $row['votes'] == 0 ? 'zero' : ($row['votes'] < 0 ? 'neg' : 'pos'); ?>
+        $class = $row['postVotes'] == 0 ? 'zero' : ($row['postVotes'] < 0 ? 'neg' : 'pos'); ?>
 
         <div class="post-container">
         <div class="post_footer">
@@ -96,13 +96,13 @@ try {
             <!-- DELETE POST -->
           <form class="deletepost" action="backend/posts/delete-post.php" method="post">
             <button>Delete post</button>
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['postID']); ?>">
             <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($row['postTitle']); ?>">
         </form>
         <!-- EDIT POST -->
-        <form class="" action="" name="edit_post" method="post">
+        <form class="editpost" action="" name="edit_post" method="post">
           <button name="edit_post">Edit post</button>
-          <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+          <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['postID']); ?>">
           <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($row['postTitle']); ?>">
       </form>
         <?php
@@ -111,7 +111,7 @@ try {
         <div class="main_content">
         <div class="main">
         <form class="" action="backend/posts/vote.php" method="post">
-        <input type="hidden" name="postID" value="<?php echo $row['id'] ?>">
+        <input type="hidden" name="postID" value="<?php echo $row['postID'] ?>">
         <label class="label_downVote">
         <input type="submit" name="voteUp" onclick="upVote()" class="vote" style="display:none;">
         <svg class="upArrow vote <?php if ($CheckVote[0][voteUP] == "true") {
@@ -128,7 +128,7 @@ try {
       		C444.819,224.795,441.295,216.134,434.252,208.708z"/>
         </svg>
         </label>
-        <h1 id="scoreCounter" class=" <?php echo $class ?>"><?php echo $row['votes']?></h1>
+        <h1 id="scoreCounter" class=" <?php echo $class ?>"><?php echo $row['postVotes']?></h1>
         <label class="label_downVote">
         <input type="submit" name="voteDown" onclick="downVote()" class="vote" style="display:none;">
         <svg class="downArrow vote <?php if ($CheckVote[0][voteUP] == "false") {
@@ -167,14 +167,5 @@ try {
          ?>
   </body>
 
-  <script>
-      addEventListener("submit", function (event) {
-          if (event.target.classList.contains("deletepost")) {
-              var elements = event.target.elements;
-              if (!confirm("Are you sure you want to delete '" + elements.postTitle.value + "'?")) {
-                  event.preventDefault();
-              }
-          }
-      });
-  </script>
+  <script src="frontend/javascript/delete-post.js" charset="utf-8"></script>
 </html>

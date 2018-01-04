@@ -7,7 +7,7 @@
 include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
 try {
-    $stmt = $pdo->query('SELECT id, postTitle, postDate FROM posts ORDER BY id DESC');
+    $stmt = $pdo->query('SELECT postID, postTitle, postDate FROM posts ORDER BY postID DESC');
     while ($row = $stmt->fetch()) {
         echo '<div class="post-container">';
         echo '<form class="like-comment" action="frontend/templates/vote-or-comment.php" method="post">';
