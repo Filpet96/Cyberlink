@@ -65,43 +65,12 @@ background-size: cover;
 	<div class="row">
 
 	    <div class="col-md-8 col-md-offset-2">
-
-    		<h1>Create post</h1>
-
-    		<form action="backend/posts/create-post.php" method="POST">
-
-    		    <div class="form-group has-error">
-    		        <label for="title">Title <span class="require">*</span> <small></small></label>
-    		        <input type="text" class="form-control" name="title" />
-
-    		    </div>
-
-    		    <div class="form-group">
-    		        <label for="url">Url <span class="require">*</span></label>
-    		        <input type="url" class="form-control" name="url" />
-    		    </div>
-
-    		    <div class="form-group">
-    		        <label for="description">Description</label>
-    		        <textarea rows="2" class="form-control" name="content" ></textarea>
-    		    </div>
-
-    		    <div class="form-group">
-    		        <p><span class="require">*</span> - required fields</p>
-    		    </div>
-
-    		    <div class="form-group">
-    		        <button type="submit" class="btn btn-primary">
-    		            Create
-    		        </button>
-    		    </div>
-
-    		</form>
+        <?php  include 'frontend/templates/create-post-content.php'; ?>
 		</div>
-
 	</div>
 </div>
 <?php
+
  include 'frontend/templates/time-ago.php';
 try {
     $stmt = $pdo->query('SELECT id, userid, postTitle, postDate, postUrl, votes FROM posts ORDER BY votes DESC');
@@ -122,14 +91,23 @@ try {
 
         <div class="post-container">
         <div class="post_footer">
+          <?php if ($row['userid'] == $user_id) {
+            ?>
+            <!-- DELETE POST -->
           <form class="deletepost" action="backend/posts/delete-post.php" method="post">
             <button>Delete post</button>
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
             <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($row['postTitle']); ?>">
         </form>
+        <!-- EDIT POST -->
+        <form class="" action="" name="edit_post" method="post">
+          <button name="edit_post">Edit post</button>
+          <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+          <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($row['postTitle']); ?>">
+      </form>
+        <?php
+        } ?>
         </div>
-
-
         <div class="main_content">
         <div class="main">
         <form class="" action="backend/posts/vote.php" method="post">
