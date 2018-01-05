@@ -16,6 +16,8 @@ function getPage()
             require_once "backend/account/formredirect.php";
         } elseif ($page == "Logging-out") {
             require_once "frontend/templates/logout-loading.php";
+        } elseif ($page == "viewlink") {
+            require_once "frontend/pages/viewlink.php";
         }
     } else {
         require_once "frontend/pages/index.php";

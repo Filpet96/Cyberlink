@@ -245,9 +245,9 @@ form {
 }
 
 .post-container .post-fullname {
+  width: 70%;
   padding-left: 5%;
   font-size: calc(0.7vh + 0.7vw);
-  width: 67%;
 }
 
 .time-since-post {
@@ -494,4 +494,8 @@ button:hover {
 
 .form-control {
   font-size: calc(0.6vh + 0.6vw);
+}
+
+a {
+  color: black;
 }

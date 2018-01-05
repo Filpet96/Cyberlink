@@ -15,7 +15,7 @@ try {
         $to = $sql[0]['email'];
         $subject = "Your Recovered Password";
         $message = "please use this password to login" . $password;
-        $headers = "From : Fpetersson96@gmail.com";
+        $headers = "From : fpetersson96@gmail.com";
         if (mail($to, $subject, $message, $headers)) {
             echo "Your Password has been sent to your email id";
         } else {

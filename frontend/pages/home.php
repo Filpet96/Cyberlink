@@ -147,9 +147,17 @@ try {
          <a href="<?php echo $row['postUrl']; ?>" target="_blank">
            <img src="frontend/images/link.svg" alt="">
          </a>
-
-         <h1 class="post-fullname"><?php echo $row['postTitle'] ?></h1>
-
+         <?php $url = urldecode('viewlink&id=' . $row['postID'] . '&title='. $row['postTitle'] .'');
+        if (!function_exists('cleanURL')) {
+            function cleanURL($textURL)
+            {
+                $URL = strtolower(preg_replace(array('/[^a-z0-9\- ]/i', '/[ \-]+/'), array('', '_'), $textURL));
+                return $URL;
+            }
+        }
+        // echo  "<h1 class='post-fullname'><a href='viewlink&id=".cleanURL($row['postTitle'])."'>{$row['postTitle']}</a></h1>";?>
+        <h1 class="post-fullname"><a href="viewlink&id=<?php echo $row['postID'] ?>&title=<?php echo cleanURL($row['postTitle']) ?>"><?php echo $row['postTitle'] ?></a></h1>
+        <!-- <h1 class="post-fullname"><a href='viewlink&id=' . cleanURL($row['postTitle']) . '"'</a></h1> -->
          </div>
          </div>
          </form>
