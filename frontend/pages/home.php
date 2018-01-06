@@ -96,7 +96,7 @@ try {
             <!-- DELETE POST -->
           <form class="deletepost" action="backend/posts/delete-post.php" method="post">
             <button>Delete post</button>
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['postID']); ?>">
+            <input type="hidden" name="postID" value="<?php echo htmlspecialchars($row['postID']); ?>">
             <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($row['postTitle']); ?>">
         </form>
         <!-- EDIT POST -->
@@ -154,10 +154,8 @@ try {
                 $URL = strtolower(preg_replace(array('/[^a-z0-9\- ]/i', '/[ \-]+/'), array('', '_'), $textURL));
                 return $URL;
             }
-        }
-        // echo  "<h1 class='post-fullname'><a href='viewlink&id=".cleanURL($row['postTitle'])."'>{$row['postTitle']}</a></h1>";?>
+        } ?>
         <h1 class="post-fullname"><a href="viewlink&id=<?php echo $row['postID'] ?>&title=<?php echo cleanURL($row['postTitle']) ?>"><?php echo $row['postTitle'] ?></a></h1>
-        <!-- <h1 class="post-fullname"><a href='viewlink&id=' . cleanURL($row['postTitle']) . '"'</a></h1> -->
          </div>
          </div>
          </form>

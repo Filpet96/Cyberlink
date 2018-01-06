@@ -57,9 +57,8 @@ background-size: cover;
 </div>
 <div class="container_create_post">
 	<div class="row">
-
-	    <div class="col-md-8 col-md-offset-2">
         <?php
+        include 'frontend/templates/time-ago.php';
         try {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $pdo->prepare('SELECT postID, userid, postTitle, postCont, postDate, postUrl, postImage, postVotes FROM posts WHERE postID = :postID');
@@ -73,15 +72,22 @@ background-size: cover;
             echo $e->getMessage();
         }
 
+?>
 
-        echo '<div>';
-        echo '<h1>'.$row['postTitle'].'</h1>';
-        echo '<p>Posted on '.date('jS M Y', strtotime($row['postDate'])).'</p>';
-        echo '<p>'.$row['postCont'].'</p>';
-        echo '</div>';
-         ?>
-
-		</div>
+        <div class="viewlink_container">
+          <div class="posted">
+          <p>Posted <?php echo time_elapsed_string($row['postDate'], true) ?></p>
+          </div>
+          <div class="viewlink_title">
+        <h1><?php echo $row['postTitle'] ?></h1>
+      </div>
+      <div class="viewlink_link">
+        <p>Link:<?php echo $row['postUrl'] ?></p>
+      </div>
+      <div class="viewlink_content">
+        <p><?php echo $row['postCont'] ?></p>
+        </div>
+        </div>
 	</div>
 </div>
 <?php

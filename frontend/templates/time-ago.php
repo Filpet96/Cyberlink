@@ -9,12 +9,12 @@ function time_elapsed_string($datetime, $full = false)
     $diff->d -= $diff->w * 7;
 
     $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'min',
+        'y' => 'y',
+        'm' => 'm',
+        'w' => 'w',
+        'd' => 'd',
+        'h' => 'h',
+        'i' => 'm',
     );
     foreach ($string as $k => &$v) {
         if ($diff->$k) {

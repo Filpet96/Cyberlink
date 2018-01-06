@@ -11,7 +11,6 @@ $loginquery = $pdo->prepare("SELECT * FROM users WHERE email=:email COLLATE NOCA
 $loginquery->bindParam(':email', $email);
 $loginquery->execute();
 $loginquery = $loginquery->fetchAll(PDO::FETCH_ASSOC);
-
 if (!empty($loginquery)) {
     if (password_verify($password, $loginquery[0]['password'])) {
         $_SESSION['user_id'] = $loginquery[0]['userid'];
