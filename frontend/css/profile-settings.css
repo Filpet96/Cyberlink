@@ -214,7 +214,7 @@ label:hover {
   flex-flow: wrap;
 }
 
-input[type="text"], textarea {
+input[type="text"] {
   outline: none;
   box-shadow: none !important;
 }
@@ -226,8 +226,6 @@ input[type="text"], textarea {
   margin-top: 1%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
-.save-information input {}
 
 .save-information input:hover {
   cursor: pointer;

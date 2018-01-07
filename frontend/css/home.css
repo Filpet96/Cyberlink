@@ -103,12 +103,6 @@ li a:hover .logouticon {
   color: white;
 }
 
-.username h1 {
-  color: black;
-  text-align: center;
-  font-size: calc(1.2vw + 1.2vh);
-}
-
 .profile-image {
   position: relative;
   border-radius: 50%;
@@ -176,34 +170,6 @@ form {
   align-items: center;
 }
 
-.create-post-container {
-  width: 60%;
-  height: 32%;
-  background: white;
-  display: inline-block;
-  position: relative;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  margin-left: 4%;
-  border-radius: 4px;
-  padding: 1%;
-}
-
-.create-post-container h1 {
-  margin: 0 auto;
-  text-align: center;
-  font-size: calc(1vh + 1vw);
-  margin-bottom: 1%;
-}
-
-.create-post-container input {
-  display: block;
-  width: 95%;
-  height: 20%;
-  font-size: calc(0.9vh + 0.9vw);
-  margin: 0 auto;
-  margin-top: 1%;
-}
-
 .createpost_container input {
   background: #222222;
   color: white;
@@ -224,22 +190,24 @@ form {
   color: white;
 }
 
-.create-post-container .url_input {
-  font-size: calc(0.6vh + 0.6vw);
+.editpost_container input {
+  background: #222222;
+  color: white;
 }
 
-.create-post-container textarea {
-  display: block;
-  width: 95%;
-  height: 20%;
-  margin: 0 auto;
-  font-size: calc(0.6vh + 0.6vw);
-  resize: none;
-  padding: 0;
+.editpost_container input:focus {
+  background: #222222;
+  color: white;
 }
 
-.create-post-container .text {
-  margin-top: 1.5%;
+.editpost_container textarea {
+  background: #222222;
+  color: white;
+}
+
+.editpost_container textarea:focus {
+  background: #222222;
+  color: white;
 }
 
 .post-container {
@@ -253,16 +221,6 @@ form {
   border-radius: 4px;
   margin-top: 1%;
   float: right;
-}
-
-.post-profile-image {
-  position: relative;
-  border-radius: 50%;
-  width: 10%;
-  height: auto;
-  padding-top: 10%;
-  background: black;
-  float: left;
 }
 
 .post-container .post-fullname {
@@ -295,28 +253,6 @@ form {
   color: white;
   margin-top: 1%;
 } */
-
-.create-post input:hover {
-  cursor: pointer;
-  background-color: white;
-  color: #51626D;
-}
-
-.post-container hr {
-  margin-top: 10%;
-  width: 100%;
-}
-
-.comment {
-  position: absolute;
-  bottom: 0;
-  right: 10%;
-  color: blue;
-}
-
-.post-content p {
-  font-size: calc(0.6vh + 0.6vw);
-}
 
 .main {
   position: relative;
@@ -374,40 +310,6 @@ form {
   fill: #BBBBBB;
 }
 
-#upButton:hover path {
-  fill: #6CC576;
-  cursor: pointer;
-}
-
-#downButton:hover path {
-  fill: #FF586C;
-  cursor: pointer;
-}
-
-h1.zero {
-  color: #666666;
-}
-
-h1.pos {
-  color: #6CC576;
-}
-
-h1.neg {
-  color: #FF586C;
-}
-
-.redvote path {
-  fill: #FF586C;
-}
-
-.greenvote path {
-  fill: #6CC576;
-}
-
-svg.grayvote {
-  fill: black;
-}
-
 a:hover {
   cursor: pointer;
 }
@@ -439,14 +341,6 @@ a img:hover {
   height: 100%;
 }
 
-.create_post_container_1 {
-  width: 62%;
-  height: auto;
-  background-color: white;
-  margin-left: 27%;
-  border-radius: 4px;
-}
-
 label small {
   color: #999;
   font-weight: normal;
@@ -459,6 +353,7 @@ label {
 .container_create_post {
   background-color: #161616;
   width: 62%;
+  height: auto;
   margin-left: 27%;
   border-radius: 4px;
   color: white;
@@ -484,8 +379,6 @@ label {
   display: inline;
   width: 100%;
 }
-
-.post_footer .delete_post {}
 
 .post_footer form button {
   float: right;
@@ -567,4 +460,84 @@ a {
 
 .viewlink_content p {
   font-size: calc(0.6vh + 0.6vw);
+}
+
+.viewlink_comments {
+  margin-left: 27%;
+  width: 62%;
+  min-height: 15%;
+  background: #161616;
+}
+
+.comment {
+  display: block;
+  width: 50%;
+  height: 100%;
+  background: #222222;
+  margin: 0 auto;
+  border-radius: 4px;
+  padding: 2%;
+  padding-bottom: 5%;
+  position: relative;
+  color: white;
+  /* box-shadow: 0 1px 1px rgba(22, 22, 22, 0.81); */
+}
+
+.comment h1 {
+  font-size: calc(0.6vh + 0.6vw);
+}
+
+.comment p {
+  font-size: calc(0.4vh + 0.4vw);
+  position: absolute;
+  bottom: -15%;
+}
+
+.create_comment textarea {
+  width: 100%;
+  height: 120px;
+  background: #222222;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  font-size: calc(0.6vh + 0.6vw);
+  padding: 3%;
+  outline: none;
+}
+
+.create_comment input {
+  background: #222222;
+  color: white;
+  font-size: calc(0.5vh + 0.5vw);
+  border: none;
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  bottom: -10;
+}
+
+.create_comment input:hover {
+  cursor: pointer;
+  outline: 1px solid white;
+  box-sizing: border-box;
+}
+
+.profile_image_comment {
+  position: absolute;
+  border-radius: 50%;
+  width: 20%;
+  height: auto;
+  padding-top: 20%;
+  background: black;
+  margin: 0 auto;
+  left: -27%;
+}
+
+.create_comment {
+  box-sizing: border-box;
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 10%;
 }

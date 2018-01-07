@@ -15,7 +15,7 @@ include 'backend/account/profile-img.php';
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link href="frontend/css/home.css" rel="stylesheet">
     <style>
-    .profile-image {
+    .profile-image, .profile_image_comment {
   background: url(
   <?php if (!empty($edit_row['userPic'])): ?>
   <?php echo "frontend/user_images/".$edit_row['userPic']; ?>
@@ -87,8 +87,24 @@ background-size: cover;
       <div class="viewlink_content">
         <p><?php echo $row['postCont'] ?></p>
         </div>
+
         </div>
 	</div>
+
+</div>
+<div class="viewlink_comments">
+  <div class="create_comment">
+    <div class="profile_image_comment"></div>
+    <textarea name="name" placeholder="Add comment..."></textarea>
+    <form class="" action="index.html" method="post">
+      <input type="submit" name="add_comment" value="Add comment">
+    </form>
+  </div>
+  <div class="comment">
+    <div class="profile_image_comment"></div>
+    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum.</h1>
+    <p>Feb 2, 2013 11:32:04 PM</p>
+  </div>
 </div>
 <?php
 

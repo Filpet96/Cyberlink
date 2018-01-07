@@ -13,7 +13,7 @@ try {
         if (isset($_POST['edit_post'])) {
             ?>
             <h1>Edit post</h1>
-          <form class="" action="backend/posts/edit-post.php" method="POST">
+          <form class="editpost_container" action="backend/posts/edit-post.php" method="POST">
       		    <div class="form-group has-error">
       		        <label for="title">Title <span class="require">*</span> <small></small></label>
       		        <input type="text" class="form-control" name="title" value="<?php echo $row['postTitle']?>" required/>

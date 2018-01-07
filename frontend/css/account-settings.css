@@ -143,41 +143,6 @@ li a:hover .logouticon {
   padding-top: 8%;
 }
 
-.picture-container {
-  width: 20%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  padding-top: 2%;
-}
-
-.picture-circle {
-  width: 15vh;
-  height: 15vh;
-  border-radius: 50%;
-  background: black;
-  margin-left: 1%;
-  margin-top: 1%;
-}
-
-.picture-container form {
-  padding-top: 10%;
-  width: 100%;
-  text-align: center;
-}
-
-.picture-container label {
-  background: #51626D;
-  border: 1px solid black;
-  border-radius: 10%;
-  color: white;
-  font-size: calc(0.5vh + 0.5vw);
-  padding-left: 12%;
-  padding-right: 12%;
-}
-
 .profile-content fieldset {
   width: 40%;
   display: inline;
@@ -208,7 +173,7 @@ li a:hover .logouticon {
   flex-flow: wrap;
 }
 
-input[type="text"], textarea {
+input[type="text"] {
   outline: none;
   box-shadow: none !important;
 }
@@ -226,15 +191,6 @@ input[type="text"], textarea {
 .save-information input:hover {
   cursor: pointer;
 }
-
-select {
-  width: 100%;
-  border: 1px solid black;
-  /*height: 150%;*/
-  font-size: calc(0.7vh + 0.7vw);
-}
-
-option {}
 
 a {
   text-decoration: none;
