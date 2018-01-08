@@ -128,7 +128,7 @@ try {
       		C444.819,224.795,441.295,216.134,434.252,208.708z"/>
         </svg>
         </label>
-        <h1 id="scoreCounter" class=" <?php echo $class ?>"><?php echo $row['postVotes']?></h1>
+        <h1 id="scoreCounter" class="<?php echo $class ?>"><?php echo $row['postVotes']?></h1>
         <label class="label_downVote">
         <input type="submit" name="voteDown" onclick="downVote()" class="vote" style="display:none;">
         <svg class="downArrow vote <?php if ($CheckVote[0][voteUP] == "false") {

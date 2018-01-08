@@ -161,6 +161,7 @@ li a:hover .logouticon {
   background: black;
   margin-left: 1%;
   margin-top: 1%;
+  border: 1px solid white;
 }
 
 .picture-container form {

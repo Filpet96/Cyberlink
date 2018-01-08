@@ -39,7 +39,7 @@ try {
           <?php
         } else {
             ?>
-            <h1>Create post</h1>
+            <h1 class="create_post_text">Create post</h1>
           <form class="createpost_container" action="backend/posts/create-post.php" method="POST">
       		    <div class="form-group has-error">
       		        <label for="title">Title <span class="require">*</span> <small></small></label>

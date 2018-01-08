@@ -105,6 +105,7 @@ background-size: cover;
     <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum.</h1>
     <p>Feb 2, 2013 11:32:04 PM</p>
   </div>
+  
 </div>
 <?php
 

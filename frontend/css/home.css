@@ -29,6 +29,40 @@ nav li {
   float: left;
 }
 
+h1.zero {
+  color: #666666;
+}
+
+h1.pos {
+  color: #6CC576;
+}
+
+h1.neg {
+  color: #FF586C;
+}
+
+.redvote path {
+  fill: #FF586C !important;
+}
+
+.greenvote path {
+  fill: #6CC576 !important;
+}
+
+svg.grayvote {
+  fill: black;
+}
+
+#upButton:hover path {
+  fill: #6CC576;
+  cursor: pointer;
+}
+
+#downButton:hover path {
+  fill: #FF586C;
+  cursor: pointer;
+}
+
 nav li a {
   color: white;
   width: 100%;
@@ -112,6 +146,7 @@ li a:hover .logouticon {
   background: black;
   margin: 0 auto;
   margin-top: 10%;
+  border: 1px solid white;
 }
 
 hr {
@@ -357,7 +392,6 @@ label {
   margin-left: 27%;
   border-radius: 4px;
   color: white;
-  padding-bottom: 3%;
 }
 
 .row {
@@ -467,6 +501,7 @@ a {
   width: 62%;
   min-height: 15%;
   background: #161616;
+  padding-bottom: 5%;
 }
 
 .comment {
@@ -540,4 +575,13 @@ a {
   margin: 0 auto;
   position: relative;
   margin-bottom: 10%;
+  padding-top: 10%;
+}
+
+.votingValue {
+  color: #BBBBBB;
+}
+
+.create_post_text {
+  margin-top: 5%;
 }
