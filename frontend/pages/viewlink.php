@@ -64,6 +64,8 @@ background-size: cover;
             $stmt = $pdo->prepare('SELECT postID, userid, postTitle, postCont, postDate, postUrl, postImage, postVotes FROM posts WHERE postID = :postID');
             $stmt->execute(array(':postID' => $_GET['id']));
             $row = $stmt->fetch();
+
+
             if ($row['postID'] == '') {
                 echo "ERROR";
                 exit;
@@ -94,18 +96,37 @@ background-size: cover;
 </div>
 <div class="viewlink_comments">
   <div class="create_comment">
-    <div class="profile_image_comment"></div>
-    <textarea name="name" placeholder="Add comment..."></textarea>
-    <form class="" action="index.html" method="post">
+    <div class="profile_image_comment img_comm1"></div>
+    <form class="" action="backend/posts/comment.php" method="post">
+      <input type="hidden" name="postID" value="<?=$row['postID'];?>" />
+      <input type="hidden" name="postTitle" value="<?=$row['postTitle'];?>" />
+    <textarea name="comment" placeholder="Add comment..."></textarea>
       <input type="submit" name="add_comment" value="Add comment">
     </form>
   </div>
+  <?php
+  try {
+      $stmt = $pdo->query('SELECT userid, comment, commentDate FROM comments ORDER BY commentDate DESC');
+      while ($row = $stmt->fetch()) {
+          $name_comment = $pdo->prepare("SELECT fullname FROM user_biography WHERE userid=:userid");
+          $userpic_comment = $pdo->prepare("SELECT userPic FROM users WHERE userid=:userid");
+          $name_comment->execute(array(':userid'=>$row['userid']));
+          $userpic_comment->execute(array(':userid'=>$row['userid']));
+          $name_comment_fetched = $name_comment->fetch(PDO::FETCH_ASSOC);
+          $userpic_comment_fetched = $userpic_comment->fetch(PDO::FETCH_ASSOC);
+          extract($name_comment_fetched);
+          extract($userpic_comment_fetched); ?>
   <div class="comment">
-    <div class="profile_image_comment"></div>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum.</h1>
-    <p>Feb 2, 2013 11:32:04 PM</p>
+    <div class="profile_image_comment" <?php if (!empty($userpic_comment_fetched['userPic'])): ?> style="background:url(<?php echo "frontend/user_images/".$userpic_comment_fetched['userPic'] ?>);background-position:center;background-size:cover" <?php endif; ?>></div>
+    <h1><?php echo $row['comment'] ?></h1>
+    <p>Posted <?php echo time_elapsed_string($row['commentDate'], true); ?> by <?php echo $name_comment_fetched['fullname']?></p>
   </div>
-  
+  <?php
+      }
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  }
+   ?>
 </div>
 <?php
 

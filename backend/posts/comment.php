@@ -1,38 +1,48 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 // ASSIGN VARIABLE FROM FORM
 $email = $_SESSION['loggedin'];
 $user_id = $_SESSION['user_id'];
 
-$postTitle = $_POST['title'];
-$postCont = $_POST['content'];
-$postDate = date("Y-m-d H:i:s");
-$postUrl = $_POST['url'];
 
+if (isset($_POST['add_comment'])) {
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $comment = $_POST['comment'];
+    $commentDate = date("Y-m-d H:i:s");
+    $postID = $_POST['postID'];
+    $postTitle = $_POST['postTitle'];
 
-if (empty($postTitle) && empty($postCont)) {
-    echo "You must have a title and content!";
-} else {
-    //INSERT DATA INTO DATABASE
-    $sqlPost = $pdo->prepare("INSERT INTO posts ( userid, postTitle, postCont, postDate, postUrl, postVotes )
-                           VALUES ( :user_id, :postTitle, :postCont, :postDate, :postUrl, 0 )");
-
-    // EXECUTE AND PREPARE
-    $sqlPost->bindParam(':user_id', $user_id);
-    $sqlPost->bindParam(':postTitle', $postTitle);
-    $sqlPost->bindParam(':postCont', $postCont);
-    $sqlPost->bindParam(':postDate', $postDate);
-    $sqlPost->bindParam(':postUrl', $postUrl);
-    $result = $sqlPost->execute();
-    //EXECUTE QUERY
-    if ($result) {
-        $_SESSION['PostCreated'] = "Post Created!";
-        header("location: ../../home");
-        exit;
+    if (empty($comment)) {
+        echo "You must write a comment";
     } else {
-        echo "Error database failure";
+        //INSERT DATA INTO DATABASE
+        $sqlComment = $pdo->prepare("INSERT INTO comments ( userid, comment, commentDate )
+                           VALUES ( :userid, :comment, :commentDate)");
+
+        // EXECUTE AND PREPARE
+        $sqlComment->bindParam(':userid', $user_id);
+        $sqlComment->bindParam(':comment', $comment);
+        $sqlComment->bindParam(':commentDate', $commentDate);
+        $result = $sqlComment->execute();
+        //EXECUTE QUERY
+        if (!function_exists('cleanURL')) {
+            function cleanURL($textURL)
+            {
+                $URL = strtolower(preg_replace(array('/[^a-z0-9\- ]/i', '/[ \-]+/'), array('', '_'), $textURL));
+                return $URL;
+            }
+        }
+        $url = '../../viewlink&id='.$postID.'&title='.cleanURL($postTitle).'';
+        if ($result) {
+            header("location: $url");
+            exit;
+        } else {
+            echo "Error database failure";
+        }
     }
 }

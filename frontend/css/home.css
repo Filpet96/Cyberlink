@@ -515,6 +515,7 @@ a {
   padding-bottom: 5%;
   position: relative;
   color: white;
+  margin-bottom: 3%;
   /* box-shadow: 0 1px 1px rgba(22, 22, 22, 0.81); */
 }
 
@@ -567,6 +568,7 @@ a {
   background: black;
   margin: 0 auto;
   left: -27%;
+  top: 0;
 }
 
 .create_comment {
@@ -584,6 +586,10 @@ a {
 
 .create_post_text {
   margin-top: 5%;
+}
+
+.img_comm1 {
+  top: 35%;
 }
 
 @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
