@@ -14,6 +14,7 @@ include 'backend/account/profile-img.php';
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link href="frontend/css/home.css" rel="stylesheet">
+    <link rel="icon" href="frontend/images/reddit.png">
     <style>
     .profile-image, .profile_image_comment {
   background: url(

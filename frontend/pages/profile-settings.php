@@ -19,6 +19,8 @@ unset($_SESSION['Image_Updated']);
     <title>Cyberlink</title>
     <link href="frontend/css/profile-settings.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" href="frontend/images/reddit.png">
     <style>
     .picture-circle {
   background: url(

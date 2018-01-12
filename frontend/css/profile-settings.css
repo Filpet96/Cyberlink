@@ -8,7 +8,7 @@ body {
   background: #222222;
   width: 100vw;
   height: 100vh;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -41,7 +41,7 @@ header nav li a {
 a .homeicon {
   width: 40%;
   height: 40%;
-  background-image: url(../images/home.png);
+  background-image: url(../images/reddit-white.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -74,7 +74,7 @@ li a:hover {
 }
 
 li a:hover .homeicon {
-  background-image: url(../images/homeblack.png);
+  background-image: url(../images/reddit-black.png);
 }
 
 li a:hover .settingsicon {
@@ -195,8 +195,7 @@ label:hover {
 .profile-content input {
   border: none;
   width: 100%;
-  border-bottom: 1px solid black;
-  font-size: calc(0.8vh + 0.8vw);
+  font-size: calc(0.7vh + 0.7vw);
   background: #222222;
   color: white;
 }
@@ -233,10 +232,9 @@ input[type="text"] {
 }
 
 select {
-  width: 100%;
-  border: 1px solid black;
-  /*height: 150%;*/
-  font-size: calc(0.7vh + 0.7vw);
+  width: 102%;
+  font-size: calc(0.6vh + 0.6vw);
+  border: none;
 }
 
 option {

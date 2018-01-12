@@ -22,8 +22,9 @@ unset($_SESSION['Accountfail']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Cyberlink</title>
     <link href="frontend/css/index.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="icon" href="frontend/images/reddit.png">
   </head>
   <body>
     <section class="user">

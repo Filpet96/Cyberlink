@@ -8,7 +8,7 @@ body {
   background: #222222;
   width: 100vw;
   height: 100vh;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -41,7 +41,7 @@ header nav li a {
 a .homeicon {
   width: 40%;
   height: 40%;
-  background-image: url(../images/home.png);
+  background-image: url(../images/reddit-white.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -74,7 +74,7 @@ li a:hover {
 }
 
 li a:hover .homeicon {
-  background-image: url(../images/homeblack.png);
+  background-image: url(../images/reddit-black.png);
 }
 
 li a:hover .settingsicon {

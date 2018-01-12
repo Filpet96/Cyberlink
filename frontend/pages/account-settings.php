@@ -34,7 +34,8 @@ unset($_SESSION['Wrong_Password']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Cyberlink</title>
     <link href="frontend/css/account-settings.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" href="frontend/images/reddit.png">
   </head>
   <body>
 <?php include_once 'frontend/templates/header.php'; ?>
