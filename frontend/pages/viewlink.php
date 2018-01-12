@@ -98,17 +98,35 @@ background-size: cover;
 
 </div>
 <div class="viewlink_comments">
+  <?php
+  if (isset($_POST['edit_comment'])) {
+      ?>
+      <div class="create_comment">
+        <form class="" action="backend/posts/edit-comment.php" method="post">
+          <input type="hidden" name="postID" value="<?php echo $row['postID']; ?>" />
+          <input type="hidden" name="postTitle" value="<?php echo $row['postTitle']; ?>" />
+          <input type="hidden" name="commentID" value="<?php echo $_POST['commentID']; ?>" />
+        <textarea name="comment"><?php echo $_POST['comment'] ?></textarea>
+          <input type="submit" name="edit_comment" value="Edit comment">
+        </form>
+      </div>
+      <?php
+  } else {
+      ?>
   <div class="create_comment">
     <form class="" action="backend/posts/comment.php" method="post">
-      <input type="hidden" name="postID" value="<?=$row['postID'];?>" />
-      <input type="hidden" name="postTitle" value="<?=$row['postTitle'];?>" />
+      <input type="hidden" name="postID" value="<?=$row['postID']; ?>" />
+      <input type="hidden" name="postTitle" value="<?=$row['postTitle']; ?>" />
     <textarea name="comment" placeholder="Add comment..."></textarea>
       <input type="submit" name="add_comment" value="Add comment">
     </form>
   </div>
   <?php
+  }
+ ?>
+  <?php
   try {
-      $stmt = $pdo->query('SELECT postID, userid, comment, commentDate FROM comments WHERE postID = :postID ORDER BY commentDate DESC');
+      $stmt = $pdo->query('SELECT commentID, postID, userid, comment, commentDate FROM comments WHERE postID = :postID ORDER BY commentDate DESC');
       $stmt->execute(array(':postID' => $row['postID']));
       while ($row = $stmt->fetch()) {
           $name_comment = $pdo->prepare("SELECT fullname FROM user_biography WHERE userid=:userid");
@@ -120,6 +138,24 @@ background-size: cover;
           extract($name_comment_fetched);
           extract($userpic_comment_fetched); ?>
   <div class="comment">
+    <div class="post_footer">
+      <?php if ($row['userid'] == $user_id) {
+              ?>
+        <!-- DELETE POST -->
+      <form class="delete_comment" action="backend/posts/delete-comment.php" method="post">
+        <button>Delete</button>
+        <input type="hidden" name="commentID" value="<?php echo htmlspecialchars($row['commentID']); ?>">
+        <input type="hidden" name="comment" value="<?php echo htmlspecialchars($row['comment']); ?>">
+    </form>
+    <!-- EDIT POST -->
+    <form class="edit_comment" action="" name="edit_comment" method="post">
+      <button name="edit_comment">Edit post</button>
+      <input type="hidden" name="commentID" value="<?php echo htmlspecialchars($row['commentID']); ?>">
+      <input type="hidden" name="comment" value="<?php echo htmlspecialchars($row['comment']); ?>">
+  </form>
+    <?php
+          } ?>
+    </div>
     <div class="profile_image_comment" <?php if (!empty($userpic_comment_fetched['userPic'])): ?> style="background:url(<?php echo "frontend/user_images/".$userpic_comment_fetched['userPic'] ?>);background-position:center;background-size:cover" <?php endif; ?>></div>
     <h1><?php echo $row['comment'] ?></h1>
     <p>Posted <?php echo time_elapsed_string($row['commentDate'], true); ?> by <?php echo $name_comment_fetched['fullname']?></p>
@@ -135,4 +171,5 @@ background-size: cover;
 
          ?>
   </body>
+  <script src="frontend/javascript/delete-comment.js" charset="utf-8"></script>
 </html>
