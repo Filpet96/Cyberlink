@@ -434,7 +434,20 @@ textarea {
   background: transparent;
 }
 
+.delete_comment button {
+  border: none;
+  color: red;
+  background: transparent;
+}
+
 .editpost button {
+  border: none;
+  color: white;
+  opacity: 0.6;
+  background: transparent;
+}
+
+.edit_comment button {
   border: none;
   color: white;
   opacity: 0.6;
@@ -526,7 +539,7 @@ a {
   position: relative;
   color: white;
   margin-bottom: 3%;
-  /* box-shadow: 0 1px 1px rgba(22, 22, 22, 0.81); */
+  padding-top: 3%;
 }
 
 .comment h1 {

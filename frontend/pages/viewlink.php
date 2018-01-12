@@ -74,7 +74,8 @@ background-size: cover;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-
+        $postID_fetch = $row['postID'];
+        $postTitle_fetch = $row['postTitle'];
 ?>
 
         <div class="viewlink_container">
@@ -144,13 +145,15 @@ background-size: cover;
         <!-- DELETE POST -->
       <form class="delete_comment" action="backend/posts/delete-comment.php" method="post">
         <button>Delete</button>
-        <input type="hidden" name="commentID" value="<?php echo htmlspecialchars($row['commentID']); ?>">
+        <input type="hidden" name="commentID" value="<?php echo $row['commentID'] ?>">
         <input type="hidden" name="comment" value="<?php echo htmlspecialchars($row['comment']); ?>">
+        <input type="hidden" name="postID" value="<?php echo $postID_fetch ?>">
+        <input type="hidden" name="postTitle" value="<?php echo htmlspecialchars($postTitle_fetch); ?>">
     </form>
     <!-- EDIT POST -->
     <form class="edit_comment" action="" name="edit_comment" method="post">
-      <button name="edit_comment">Edit post</button>
-      <input type="hidden" name="commentID" value="<?php echo htmlspecialchars($row['commentID']); ?>">
+      <button name="edit_comment">Edit</button>
+      <input type="hidden" name="commentID" value="<?php echo $row['commentID'] ?>">
       <input type="hidden" name="comment" value="<?php echo htmlspecialchars($row['comment']); ?>">
   </form>
     <?php
