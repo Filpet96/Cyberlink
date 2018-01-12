@@ -24,7 +24,7 @@ unset($_SESSION['Accountfail']);
     <link href="frontend/css/index.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="icon" href="frontend/images/reddit.png">
+    <link rel="icon" href="frontend/images/reddit-white.png">
   </head>
   <body>
     <section class="user">

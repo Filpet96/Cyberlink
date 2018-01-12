@@ -35,7 +35,7 @@ unset($_SESSION['Wrong_Password']);
     <title>Cyberlink</title>
     <link href="frontend/css/account-settings.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" href="frontend/images/reddit.png">
+    <link rel="icon" href="frontend/images/reddit-white.png">
   </head>
   <body>
 <?php include_once 'frontend/templates/header.php'; ?>
