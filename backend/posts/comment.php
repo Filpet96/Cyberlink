@@ -21,10 +21,11 @@ if (isset($_POST['add_comment'])) {
         echo "You must write a comment";
     } else {
         //INSERT DATA INTO DATABASE
-        $sqlComment = $pdo->prepare("INSERT INTO comments ( userid, comment, commentDate )
-                           VALUES ( :userid, :comment, :commentDate)");
+        $sqlComment = $pdo->prepare("INSERT INTO comments ( postID, userid, comment, commentDate )
+                           VALUES ( :postID, :userid, :comment, :commentDate)");
 
         // EXECUTE AND PREPARE
+        $sqlComment->bindParam(':postID', $postID);
         $sqlComment->bindParam(':userid', $user_id);
         $sqlComment->bindParam(':comment', $comment);
         $sqlComment->bindParam(':commentDate', $commentDate);

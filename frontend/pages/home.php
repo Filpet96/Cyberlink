@@ -145,7 +145,7 @@ try {
          </div>
          <div class="link_svg_title">
          <a href="<?php echo $row['postUrl']; ?>" target="_blank">
-           <img src="frontend/images/link.svg" alt="">
+           <img  src="frontend/images/link.svg" alt="">
          </a>
          <?php $url = urldecode('viewlink&id=' . $row['postID'] . '&title='. $row['postTitle'] .'');
         if (!function_exists('cleanURL')) {

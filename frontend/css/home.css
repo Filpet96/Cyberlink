@@ -490,6 +490,16 @@ a {
 
 .viewlink_link {
   overflow: hidden;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 11%;
+  height: 37%;
+}
+
+.comment_link {
+  width: 100%;
+  height: 100%;
 }
 
 .viewlink_content p {
@@ -524,14 +534,16 @@ a {
 }
 
 .comment p {
-  font-size: calc(0.4vh + 0.4vw);
+  font-size: calc(0.3vh + 0.3vw);
   position: absolute;
-  bottom: -15%;
+  opacity: 0.6;
+  top: 5%;
+  right: 2%;
 }
 
 .create_comment textarea {
   width: 100%;
-  height: 120px;
+  height: calc(4vh + 4vw);
   background: #222222;
   box-sizing: border-box;
   border: none;

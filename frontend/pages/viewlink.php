@@ -24,6 +24,7 @@ include 'backend/account/profile-img.php';
   );
   background-position: center;
   background-size: cover;
+  border: 1px solid white;
   }
   .post-profile-image {
 background: url(
@@ -84,7 +85,9 @@ background-size: cover;
         <h1><?php echo $row['postTitle'] ?></h1>
       </div>
       <div class="viewlink_link">
-        <p>Link:<?php echo $row['postUrl'] ?></p>
+        <a href="<?php echo $row['postUrl']; ?>" target="_blank">
+          <img class="comment_link" src="frontend/images/link.svg" alt="">
+        </a>
       </div>
       <div class="viewlink_content">
         <p><?php echo $row['postCont'] ?></p>
@@ -96,7 +99,6 @@ background-size: cover;
 </div>
 <div class="viewlink_comments">
   <div class="create_comment">
-    <div class="profile_image_comment img_comm1"></div>
     <form class="" action="backend/posts/comment.php" method="post">
       <input type="hidden" name="postID" value="<?=$row['postID'];?>" />
       <input type="hidden" name="postTitle" value="<?=$row['postTitle'];?>" />
@@ -106,7 +108,8 @@ background-size: cover;
   </div>
   <?php
   try {
-      $stmt = $pdo->query('SELECT userid, comment, commentDate FROM comments ORDER BY commentDate DESC');
+      $stmt = $pdo->query('SELECT postID, userid, comment, commentDate FROM comments WHERE postID = :postID ORDER BY commentDate DESC');
+      $stmt->execute(array(':postID' => $row['postID']));
       while ($row = $stmt->fetch()) {
           $name_comment = $pdo->prepare("SELECT fullname FROM user_biography WHERE userid=:userid");
           $userpic_comment = $pdo->prepare("SELECT userPic FROM users WHERE userid=:userid");
