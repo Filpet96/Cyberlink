@@ -621,12 +621,11 @@ a {
 @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
   .container_create_post {
     width: 75%;
-    margin-left: 23%;
+    margin-left: 25%;
   }
   .my-profile {
     height: 36.5%;
-    width: 30%;
-    margin-left: -8%;
+    width: 25%;
   }
   .form-group {
     margin-bottom: 0;
