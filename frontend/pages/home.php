@@ -54,7 +54,7 @@ background-size: cover;
       <table>
       <tr><td><span class="profession"><?php echo $biography_info[0]['fullname'] ?></span></td></tr>
       <tr><td><span class="location"><?php if (!empty($biography_info[0]['country'])): ?><?php echo $biography_info[0]['country'] ?>
-    <?php else: echo "Add location"; ?>
+    <?php else: echo "<a href='../../profile-settings'>Add country</a>";?>
       <?php endif; ?></span></td></tr>
       <tr><td><span class="birthday"><?php echo $biography_info[0]['dateofbirth'] ?></span></td></tr>
     </div>
