@@ -351,8 +351,13 @@ a:hover {
 }
 
 a img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.link_svg_title a {
+  width: 9.6%;
+  height: 50%;
 }
 
 a img:hover {
@@ -624,7 +629,7 @@ a {
     margin-left: 25%;
   }
   .my-profile {
-    height: 36.5%;
+    height: 27.5%;
     width: 25%;
   }
   .form-group {
@@ -653,6 +658,38 @@ a {
   }
   .row {
     margin: 0;
+  }
+  .viewlink_container {
+    margin-bottom: 10%;
+  }
+  body {
+    background: #161616;
+  }
+  .comment {
+    width: 100%;
+  }
+  .comment h1 {
+    font-size: calc(0.8vh + 0.8vw);
+  }
+  .profile_image_comment {
+    padding-top: 14%;
+    width: 14%;
+  }
+  .viewlink_content p {
+    font-size: calc(0.8vh + 0.8vw);
+  }
+  .viewlink_content {
+    max-width: 90%;
+    margin-top: 5%;
+  }
+  .create_comment {
+    width: 71%;
+  }
+  .form-control {
+    font-size: calc(0.9vh + 0.9vw);
+  }
+  .viewlink_link {
+    top: 0;
   }
 }
 
