@@ -46,7 +46,9 @@ unset($_SESSION['Image_Updated']);
       <div class="picture-container">
         <div class="picture-circle"></div>
         <form class="" id="imgform" action="backend/account/profile-img.php" method="post" enctype="multipart/form-data">
-          <label class="select-file" for="profile-img">Select File</label>
+          <section class="buttons">
+          <label class="btn btn-3" for="profile-img">Select File</label>
+</section>
           <input type="file" id="profile-img" name="user_image" accept="image/*" style="display:none" />
         </form>
       </div>
@@ -324,8 +326,8 @@ unset($_SESSION['Image_Updated']);
       </select>
       </fieldset>
       </div>
-      <div class="save-information">
-        <input type="submit" name="biography" value="SAVE">
+      <div class="">
+        <input type="submit" class="btn btn-3" name="biography" value="SAVE">
       </div>
       </form>
     </div>
