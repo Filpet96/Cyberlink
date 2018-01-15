@@ -114,7 +114,7 @@ try {
         <input type="hidden" name="postID" value="<?php echo $row['postID'] ?>">
         <label class="label_downVote">
         <input type="submit" name="voteUp" onclick="upVote()" class="vote" style="display:none;">
-        <svg class="upArrow vote <?php if ($CheckVote[0][voteUP] == "true") {
+        <svg class="upArrow vote <?php if ($CheckVote[0][voteDirection] == "true") {
             echo 'greenvote';
         } ?>" id="upButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         	 width="444.819px"  viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;"
@@ -131,7 +131,7 @@ try {
         <h1 id="scoreCounter" class="<?php echo $class ?>"><?php echo $row['postVotes']?></h1>
         <label class="label_downVote">
         <input type="submit" name="voteDown" onclick="downVote()" class="vote" style="display:none;">
-        <svg class="downArrow vote <?php if ($CheckVote[0][voteUP] == "false") {
+        <svg class="downArrow vote <?php if ($CheckVote[0][voteDirection] == "false") {
             echo 'redvote';
         } ?>" id="downButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         	 viewBox="0 0 444.8 444.8" style="enable-background:new 0 0 444.8 444.8;" xml:space="preserve">

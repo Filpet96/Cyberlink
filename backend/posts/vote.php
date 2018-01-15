@@ -22,7 +22,7 @@ try {
 
     if (isset($_POST['voteUp'])) {
         if (! $vote_info) {
-            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, userid, voteUp )
+            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, userid, voteDirection )
                                VALUES ( :votesID, :user_id, :true)");
             $sqlVoteCheck->bindParam(':votesID', $postID);
             $sqlVoteCheck->bindParam(':user_id', $user_id);
@@ -36,12 +36,13 @@ try {
                 header("location: ../../home");
                 exit;
             }
-        } elseif ($vote_info[0]['voteUP'] == "false") {
+        } elseif ($vote_info[0]['voteDirection'] == "false") {
             $sqlvoteUp = $pdo->prepare("UPDATE posts SET postVotes=(postVotes + 2) WHERE postID=:postID");
-            $sqlVotedChange = $pdo->prepare("UPDATE votes SET voteUP = :true WHERE votesID=:votesID");
+            $sqlVotedChange = $pdo->prepare("UPDATE votes SET voteDirection = :true WHERE votesID=:votesID AND userid=:user_id");
             $sqlvoteUp->bindParam(':postID', $postID);
             $sqlVotedChange->bindParam(':votesID', $postID);
             $sqlVotedChange->bindParam(':true', $true);
+            $sqlVotedChange->bindParam(':user_id', $user_id);
             $voteUpresult = $sqlvoteUp->execute();
             $sqlVotedChangeResult = $sqlVotedChange->execute();
             if ($voteUpresult && $sqlVotedChangeResult) {
@@ -55,7 +56,7 @@ try {
     }
     if (isset($_POST['voteDown'])) {
         if (! $vote_info) {
-            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, userid, voteUp )
+            $sqlVoteCheck = $pdo->prepare("INSERT INTO votes ( votesID, userid, voteDirection )
                                VALUES ( :votesID, :user_id, :false)");
             $sqlVoteCheck->bindParam(':votesID', $postID);
             $sqlVoteCheck->bindParam(':user_id', $user_id);
@@ -69,12 +70,13 @@ try {
                 header("location: ../../home");
                 exit;
             }
-        } elseif ($vote_info[0]['voteUP'] == "true") {
+        } elseif ($vote_info[0]['voteDirection'] == "true") {
             $sqlvoteUp = $pdo->prepare("UPDATE posts SET postVotes=(postVotes - 2) WHERE postID=:postID");
-            $sqlVotedChange = $pdo->prepare("UPDATE votes SET voteUP = :false WHERE votesID=:votesID");
+            $sqlVotedChange = $pdo->prepare("UPDATE votes SET voteDirection = :false WHERE votesID=:votesID AND userid=:user_id");
             $sqlvoteUp->bindParam(':postID', $postID);
             $sqlVotedChange->bindParam(':votesID', $postID);
             $sqlVotedChange->bindParam(':false', $false);
+            $sqlVotedChange->bindParam(':user_id', $user_id);
             $voteUpresult = $sqlvoteUp->execute();
             $sqlVotedChangeResult = $sqlVotedChange->execute();
             if ($voteUpresult && $sqlVotedChangeResult) {
