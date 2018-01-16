@@ -1,17 +1,19 @@
 <?php
 require $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
-try {
-    $stmt = $pdo->prepare('SELECT postID, userid, postTitle, postCont, postDate, postUrl, postImage FROM posts WHERE postID = :postID');
-    $stmt->execute(array(':postID' => $_POST['id']));
-    $row = $stmt->fetch();
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
+// Fetching from database, would be better to FETCHALL here.
+
 ?>
 
         <?php
+        // If button edit_post is clicked RUN
         if (isset($_POST['edit_post'])) {
-            ?>
+            try {
+                $stmt = $pdo->prepare('SELECT postID, userid, postTitle, postCont, postDate, postUrl, postImage FROM posts WHERE postID = :postID');
+                $stmt->execute(array(':postID' => $_POST['id']));
+                $row = $stmt->fetch();
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            } ?>
             <h1>Edit post</h1>
           <form class="editpost_container" action="backend/posts/edit-post.php" method="POST">
       		    <div class="form-group has-error">
@@ -37,6 +39,7 @@ try {
       		    </div>
       		</form>
           <?php
+          // If button edit_post not clicked RUN
         } else {
             ?>
             <h1 class="create_post_text">Create post</h1>

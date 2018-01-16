@@ -1,9 +1,4 @@
 <?php
-// if ((isset($_POST["voteUp"])) || (isset($_POST["voteDown"]))) {
-//     header("location: ../../home");
-// } else {
-//     echo "working";
-// }
 include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
 try {

@@ -3,9 +3,9 @@ declare(strict_types=1);
 if (!isset($_SESSION)) {
     session_start();
 }
- error_reporting(~E_NOTICE);
  include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
+// Variables
  $email = $_SESSION['loggedin'];
  $user_id = $_SESSION['user_id'];
 
@@ -32,7 +32,7 @@ if (!isset($_SESSION)) {
                  }
                  move_uploaded_file($tmp_dir, $upload_dir.$userpic);
              } else {
-                 $errMSG = "Sorry, your file is too large it should be less then 5MB";
+                 $errMSG = "Sorry the file is to large must be less than 5mb";
              }
          } else {
              $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
@@ -51,10 +51,11 @@ if (!isset($_SESSION)) {
          $stmt->bindParam(':userid', $user_id);
          $stmt->bindParam(':upic', $userpic);
          if ($stmt->execute()) {
-             $_SESSION['Image_Updated'] = "Successfully Updated ...";
+             $_SESSION['Image_Updated'] = "Successfully Updated profile image ...";
              header("location: ../../profile-settings");
+             exit;
          } else {
-             $errMSG = "Sorry Data Could Not Updated !";
+             $errMSG = "Sorry image could not be set!";
          }
      }
  }

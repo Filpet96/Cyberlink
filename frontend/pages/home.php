@@ -19,7 +19,7 @@ unset($_SESSION['PostCreated']);
     <title>Cyberlink</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="icon" href="frontend/images/reddit-white.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="frontend/css/bootstrap.css">
     <link href="frontend/css/home.css" rel="stylesheet">
     <style>
     .profile-image {
@@ -65,7 +65,7 @@ background-size: cover;
 <div class="container_create_post">
 	<div class="row">
 
-	    <div class="col-md-8 col-md-offset-2">
+	    <div class="boot-contain">
         <?php  include 'frontend/templates/create-post-content.php'; ?>
 		</div>
 	</div>
@@ -115,8 +115,11 @@ try {
         <input type="hidden" name="postID" value="<?php echo $row['postID'] ?>">
         <label class="label_downVote">
         <input type="submit" name="voteUp" onclick="upVote()" class="vote" style="display:none;">
-        <svg class="upArrow vote <?php if ($CheckVote[0][voteDirection] == "true") {
-            echo 'greenvote';
+        <svg class="upArrow vote <?php
+        if (!empty($CheckVote[0]['voteDirection'])) {
+            if ($CheckVote[0]['voteDirection'] == "true") {
+                echo 'greenvote';
+            }
         } ?>" id="upButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         	 width="444.819px"  viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;"
         	 xml:space="preserve">
@@ -132,8 +135,11 @@ try {
         <h1 id="scoreCounter" class="<?php echo $class ?>"><?php echo $row['postVotes']?></h1>
         <label class="label_downVote">
         <input type="submit" name="voteDown" onclick="downVote()" class="vote" style="display:none;">
-        <svg class="downArrow vote <?php if ($CheckVote[0][voteDirection] == "false") {
-            echo 'redvote';
+        <svg class="downArrow vote <?php
+        if (!empty($CheckVote[0]['voteDirection'])) {
+            if ($CheckVote[0]['voteDirection'] == "false") {
+                echo 'redvote';
+            }
         } ?>" id="downButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         	 viewBox="0 0 444.8 444.8" style="enable-background:new 0 0 444.8 444.8;" xml:space="preserve">
         <path d="M10.6,236.1L196.4,422c7,7,15.7,10.6,26,10.6c10.5,0,19-3.5,25.7-10.6L434,236.1c7.2-7.2,10.8-15.9,10.8-26
