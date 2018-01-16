@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 if (isset($_SESSION['loggedin'])) {
     header('location:../../home');
 }
@@ -38,7 +39,7 @@ unset($_SESSION['Accountfail']);
 
           <div class="user_options-registered">
             <h2 class="user_registered-title">Have an account?</h2>
-            
+
             <button class="user_registered-login" id="login-button">Login</button>
           </div>
         </div>

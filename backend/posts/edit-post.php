@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 include $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
