@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>The Society</title>
+  <title>Cyberlink</title>
   <link rel="stylesheet" href="../../frontend/css/loading.css" >
-  <link rel="icon" href="frontend/images/reddit.png">
+  <link rel="icon" href="frontend/images/reddit-white.png">
 </head>
   <body id="body">
     <div class="loader">
