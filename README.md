@@ -30,5 +30,5 @@ The assignment is to create a Reddit clone.
 
 
 ### Site testers:
-#### Kajsa Taipele
+#### Kajsa Taipale
 #### Christoffer Modigsson
