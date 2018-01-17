@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 if (!isset($_SESSION)) {
     session_start();
 }
+// connection file
 require $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
 
+// current user's email
 $email = $_SESSION['loggedin'];
+// current users id number
 $user_id = $_SESSION['user_id'];
 
 try {

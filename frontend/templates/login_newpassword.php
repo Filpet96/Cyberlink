@@ -1,3 +1,5 @@
+<?php declare(strict_types=1); ?>
+<!-- If button forgot_password is presset continue -->
 <?php if (isset($_POST['forgot_password'])) {
     ?>
   <div class="user_forms-login">

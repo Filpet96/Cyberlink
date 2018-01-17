@@ -1,12 +1,11 @@
 <?php
+declare(strict_types=1);
+// Set maintenance variable to true if enable maintenance message
 $maintenance = false;
-$config = [
-    $dbname = "sqlite:../systemcyberlink.sql",
-    // $user = "root",
-    // $pass = "root",
-];
+// Database file dir
 $fileName = __DIR__ . "cyberlink.sql";
 $dsn = "sqlite:$fileName";
+// pdo db connection
 try {
     $pdo = new PDO($dsn);
 } catch (Exception $ex) {

@@ -1,10 +1,8 @@
 <?php
+declare(strict_types=1);
+// connection file
 require $_SERVER["DOCUMENT_ROOT"] . "/system/connection.php";
-// Fetching from database, would be better to FETCHALL here.
 
-?>
-
-        <?php
         // If button edit_post is clicked RUN
         if (isset($_POST['edit_post'])) {
             try {

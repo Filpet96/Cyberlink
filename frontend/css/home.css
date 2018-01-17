@@ -712,3 +712,7 @@ a {
 .boot-contain {
   width: 50%;
 }
+
+a:hover {
+  color: #FF5700;
+}

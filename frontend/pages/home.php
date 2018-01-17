@@ -89,7 +89,6 @@ try {
         $fullname_post_fetched = $fullname_post->fetch(PDO::FETCH_ASSOC);
         extract($fullname_post_fetched);
         $class = $row['postVotes'] == 0 ? 'zero' : ($row['postVotes'] < 0 ? 'neg' : 'pos'); ?>
-
         <div class="post-container">
         <div class="post_footer">
           <?php if ($row['userid'] == $user_id) {
@@ -148,7 +147,6 @@ try {
       		c-6.8-7.2-15.4-10.9-25.7-10.9c-10.1,0-18.7,3.6-26,10.9l-21.4,21.4c-7,7.4-10.6,16-10.6,25.7C0,220,3.5,228.7,10.6,236.1z"/>
          </svg>
          </label>
-
          </div>
          <div class="link_svg_title">
          <a href="<?php echo $row['postUrl']; ?>" target="_blank">
@@ -166,12 +164,9 @@ try {
          </div>
          </div>
          </form>
-
          <div class="time-since-post"><p> Posted <?php echo time_elapsed_string($row['postDate'], true); ?> by <?php echo $fullname_post_fetched['fullname']?></p></div>
-
          </div>
          </tr>
-
         <?php
     }
 } catch (PDOException $e) {
@@ -179,6 +174,5 @@ try {
 }
          ?>
   </body>
-
   <script src="frontend/javascript/delete-post.js" charset="utf-8"></script>
 </html>

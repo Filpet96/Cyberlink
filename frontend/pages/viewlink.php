@@ -18,6 +18,7 @@ include 'backend/account/profile-img.php';
     <link rel="icon" href="frontend/images/reddit-white.png">
     <style>
     .profile-image, .profile_image_comment {
+      /* If user has a picture set display it if not display default cyberlink.jpg picture */
   background: url(
   <?php if (!empty($edit_row['userPic'])): ?>
   <?php echo "frontend/user_images/".$edit_row['userPic']; ?>
@@ -29,6 +30,7 @@ include 'backend/account/profile-img.php';
   border: 1px solid white;
   }
   .post-profile-image {
+    /* If user has a picture set display it if not display default cyberlink.jpg picture */
 background: url(
 <?php if (!empty($edit_row['userPic'])): ?>
 <?php echo "frontend/user_images/".$edit_row['userPic']; ?>
@@ -41,10 +43,10 @@ background-size: cover;
   </style>
   </head>
   <body>
+<!-- Include header template -->
 <?php include_once 'frontend/templates/header.php'; ?>
 <div class="container">
   <div class="my-profile">
-
     <div class="profile-image"></div>
     <hr>
     <div class="information">
@@ -61,6 +63,7 @@ background-size: cover;
 <div class="container_create_post">
 	<div class="row">
         <?php
+        // Include time ago function to get time to show how long time ago etc.. posted
         include 'frontend/templates/time-ago.php';
         try {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -102,6 +105,7 @@ background-size: cover;
 </div>
 <div class="viewlink_comments">
   <?php
+  // If button pressed to edit comment display different divs with values from edited post, if not button pressed display default create comment
   if (isset($_POST['edit_comment'])) {
       ?>
       <div class="create_comment">
@@ -142,6 +146,7 @@ background-size: cover;
           extract($userpic_comment_fetched); ?>
   <div class="comment">
     <div class="post_footer">
+      <!-- If userid of post matches logged in userid display div to edit and delete post -->
       <?php if ($row['userid'] == $user_id) {
               ?>
         <!-- DELETE POST -->

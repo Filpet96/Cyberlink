@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 function time_elapsed_string($datetime, $full = false)
 {
     $now = new DateTime;

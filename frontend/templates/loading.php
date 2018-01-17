@@ -15,11 +15,12 @@
     </div>
   </body>
   <script>
+  // timeout function add class loaded to fade element after 750 ms
     setTimeout(function(){
-
         var element = document.getElementById("body");
         element.classList.add("loaded");
     }, 750);
+    // timeout function redirect to home page after 1200 ms
     setTimeout(function(){
         window.location.href = '../../home';
     }, 1200);

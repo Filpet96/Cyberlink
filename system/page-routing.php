@@ -1,5 +1,6 @@
 <?php
-
+declare(strict_types=1);
+// Page routing
 function getPage()
 {
     if (isset($_GET['page'])) {

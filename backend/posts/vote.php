@@ -51,6 +51,13 @@ try {
                 exit;
             }
         } else {
+            $sqlRemovePostVote = $pdo->prepare("UPDATE posts SET postVotes=(postVotes - 1) WHERE postID=:postID");
+            $sqlRemoveVote = $pdo->prepare("DELETE FROM votes WHERE votesID=:votesID AND userid=:user_id");
+            $sqlRemovePostVote->bindParam(':postID', $postID);
+            $sqlRemoveVote->bindParam(':votesID', $postID);
+            $sqlRemoveVote->bindParam(':user_id', $user_id);
+            $sqlRemovePostVote->execute();
+            $sqlRemoveVote->execute();
             header("location: ../../home");
             exit;
         }
@@ -85,6 +92,15 @@ try {
                 exit;
             }
         } else {
+            $sqlRemovePostVote = $pdo->prepare("UPDATE posts SET postVotes=(postVotes + 1) WHERE postID=:postID");
+            $sqlRemoveVote = $pdo->prepare("DELETE FROM votes WHERE votesID=:votesID AND userid=:user_id");
+            $sqlRemovePostVote->bindParam(':postID', $postID);
+            $sqlRemoveVote->bindParam(':votesID', $postID);
+            $sqlRemoveVote->bindParam(':user_id', $user_id);
+            $sqlRemovePostVote->execute();
+            $sqlRemoveVote->execute();
+            header("location: ../../home");
+            exit;
             header("location: ../../home");
             exit;
         }

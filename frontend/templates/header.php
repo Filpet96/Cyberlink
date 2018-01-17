@@ -1,3 +1,4 @@
+<!-- Header template -->
 <header>
   <nav>
     <li><a class="home" href="../../home"><div class="homeicon"></div></a></li>
